@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Home Guide</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f1923; color: #e0e6ed; line-height: 1.6; }
+  .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+
+  h1 { text-align: center; font-size: 2em; margin: 30px 0 10px; color: #fff; }
+  .subtitle { text-align: center; color: #7eb8da; margin-bottom: 30px; font-size: 1.1em; }
+
+  /* Search */
+  .search-box { width: 100%; padding: 14px 20px; border-radius: 12px; border: 1px solid #2a3a4a; background: #1a2733; color: #fff; font-size: 16px; margin-bottom: 30px; outline: none; }
+  .search-box:focus { border-color: #4a9eda; }
+  .search-box::placeholder { color: #5a7a8a; }
+
+  /* Nav tabs */
+  .tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+  .tab { padding: 10px 18px; border-radius: 10px; background: #1a2733; border: 1px solid #2a3a4a; color: #7eb8da; cursor: pointer; font-size: 14px; transition: all 0.2s; }
+  .tab:hover { background: #243444; }
+  .tab.active { background: #1a5276; border-color: #4a9eda; color: #fff; }
+
+  /* Sections */
+  .section { background: #1a2733; border-radius: 16px; border: 1px solid #2a3a4a; margin-bottom: 16px; overflow: hidden; }
+  .section.hidden { display: none; }
+  .section-header { padding: 18px 24px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+  .section-header:hover { background: #1e3040; }
+  .section-header h2 { font-size: 1.15em; color: #fff; display: flex; align-items: center; gap: 12px; }
+  .section-header .icon { font-size: 1.4em; }
+  .section-header .arrow { transition: transform 0.3s; font-size: 0.8em; color: #5a7a8a; }
+  .section-header .arrow.open { transform: rotate(180deg); }
+  .section-body { padding: 0 24px 20px; display: none; }
+  .section-body.open { display: block; }
+
+  /* Steps */
+  .step { background: #0f1923; border-radius: 12px; padding: 16px 20px; margin: 12px 0; border-left: 3px solid #4a9eda; }
+  .step-number { display: inline-block; background: #1a5276; color: #fff; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-size: 14px; font-weight: 600; margin-right: 10px; }
+  .step-title { font-weight: 600; color: #fff; display: inline; }
+  .step-detail { margin-top: 8px; color: #b0c4d4; font-size: 0.95em; }
+
+  /* Tips & warnings */
+  .tip { background: #1a3320; border: 1px solid #2a5a3a; border-radius: 10px; padding: 14px 18px; margin: 12px 0; font-size: 0.95em; }
+  .tip::before { content: "💡 Tip: "; font-weight: 600; color: #6adf8a; }
+  .warning { background: #3a2a1a; border: 1px solid #5a4a2a; border-radius: 10px; padding: 14px 18px; margin: 12px 0; font-size: 0.95em; }
+  .warning::before { content: "⚠️ Important: "; font-weight: 600; color: #daa520; }
+
+  /* System overview */
+  .overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+  .overview-card { background: #0f1923; border-radius: 12px; padding: 16px; text-align: center; border: 1px solid #2a3a4a; }
+  .overview-card .card-icon { font-size: 2em; margin-bottom: 8px; }
+  .overview-card .card-title { font-weight: 600; color: #fff; margin-bottom: 4px; }
+  .overview-card .card-desc { font-size: 0.85em; color: #7a9aaa; }
+
+  /* Subsections */
+  .subsection { margin: 16px 0; }
+  .subsection h3 { color: #4a9eda; margin-bottom: 10px; font-size: 1.05em; }
+  .subsection p { color: #b0c4d4; margin-bottom: 10px; }
+
+  /* Device list */
+  .device-list { list-style: none; padding: 0; }
+  .device-list li { padding: 10px 16px; background: #0f1923; border-radius: 8px; margin: 6px 0; display: flex; align-items: center; gap: 12px; border: 1px solid #2a3a4a; }
+  .device-list li .dl-icon { font-size: 1.3em; }
+  .device-list li .dl-name { font-weight: 500; color: #fff; }
+  .device-list li .dl-desc { font-size: 0.85em; color: #7a9aaa; margin-left: auto; }
+
+  /* FAQ */
+  .faq { margin: 10px 0; }
+  .faq-q { cursor: pointer; padding: 12px 16px; background: #0f1923; border-radius: 8px; margin: 6px 0; border: 1px solid #2a3a4a; color: #fff; display: flex; justify-content: space-between; }
+  .faq-q:hover { background: #152030; }
+  .faq-a { padding: 0 16px 12px; color: #b0c4d4; display: none; font-size: 0.95em; }
+  .faq-a.open { display: block; }
+
+  @media (max-width: 600px) {
+    .container { padding: 12px; }
+    .tabs { gap: 6px; }
+    .tab { padding: 8px 12px; font-size: 13px; }
+    h1 { font-size: 1.5em; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🏠 Smart Home Guide</h1>
+  <p class="subtitle">Everything you need to manage your smart home — simplified</p>
+
+  <input type="text" class="search-box" placeholder="Search... (e.g., 'change lock code', 'transfer ownership', 'add switch')" id="searchBox">
+
+  <div class="tabs">
+    <div class="tab active" data-filter="all">All</div>
+    <div class="tab" data-filter="overview">Overview</div>
+    <div class="tab" data-filter="unifi">UniFi</div>
+    <div class="tab" data-filter="lock">Aqara Lock</div>
+    <div class="tab" data-filter="switches">Kasa Switches</div>
+    <div class="tab" data-filter="ha">Home Assistant</div>
+    <div class="tab" data-filter="faq">FAQ</div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="section" data-category="overview">
+    <div class="section-header" onclick="toggleSection(this)">
+      <h2><span class="icon">📋</span> System Overview</h2>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="section-body">
+      <p>Your smart home is managed by <strong>Home Assistant</strong>, which acts as the central brain. Here's what's connected:</p>
+      <div class="overview-grid">
+        <div class="overview-card">
+          <div class="card-icon">🌐</div>
+          <div class="card-title">UniFi Network</div>
+          <div class="card-desc">Wi-Fi, network management, device tracking</div>
+        </div>
+        <div class="overview-card">
+          <div class="card-icon">📹</div>
+          <div class="card-title">UniFi Protect</div>
+          <div class="card-desc">Security cameras and video recording</div>
+        </div>
+        <div class="overview-card">
+          <div class="card-icon">🔒</div>
+          <div class="card-title">Aqara Smart Lock</div>
+          <div class="card-desc">Door lock with PIN codes, connected via Matter through Aqara Hub</div>
+        </div>
+        <div class="overview-card">
+          <div class="card-icon">💡</div>
+          <div class="card-title">Kasa Switches</div>
+          <div class="card-desc">Light switches connected via Matter protocol</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <h3>How It All Connects</h3>
+        <p><strong>Home Assistant</strong> is the central hub running on your network. It connects to everything:</p>
+        <ul class="device-list">
+          <li><span class="dl-icon">🖥️</span><span class="dl-name">Home Assistant</span><span class="dl-desc">Central controller</span></li>
+          <li><span class="dl-icon">📡</span><span class="dl-name">UniFi Network + Protect</span><span class="dl-desc">Direct integration</span></li>
+          <li><span class="dl-icon">🔌</span><span class="dl-name">Kasa Switches</span><span class="dl-desc">Connected via Matter</span></li>
+          <li><span class="dl-icon">🏠</span><span class="dl-name">Aqara Hub</span><span class="dl-desc">Bridge for Aqara lock → Matter → Home Assistant</span></li>
+          <li><span class="dl-icon">🔐</span><span class="dl-name">Aqara Lock</span><span class="dl-desc">Connected to Aqara Hub, then to HA via Matter</span></li>
+        </ul>
+      </div>
+      <div class="tip">Home Assistant is the only app you need for day-to-day control. The Aqara app and UniFi app are only needed for specific admin tasks described below.</div>
+    </div>
+  </div>
+
+  <!-- UNIFI NETWORK -->
+  <div class="section" data-category="unifi">
+    <div class="section-header" onclick="toggleSection(this)">
+      <h2><span class="icon">🌐</span> UniFi Network — Daily Use</h2>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>What UniFi Does</h3>
+        <p>UniFi manages your home Wi-Fi network, including the router, access points, and any network switches. UniFi Protect manages your security cameras.</p>
+        <p>For everyday use, you don't need to touch UniFi settings — your devices connect automatically. You only need the UniFi app if you want to check who's connected, change the Wi-Fi password, or view camera footage.</p>
+      </div>
+      <div class="subsection">
+        <h3>Accessing UniFi</h3>
+        <div class="step">
+          <span class="step-number">1</span><span class="step-title">Download the UniFi app</span>
+          <div class="step-detail">Get "UniFi" from the App Store or Google Play. This one app handles both Network and Protect.</div>
+        </div>
+        <div class="step">
+          <span class="step-number">2</span><span class="step-title">Log in with your Ubiquiti account</span>
+          <div class="step-detail">Use the email and password for your UI.com account. If you don't have one, you'll need the current owner to add you first (see Transfer Ownership below).</div>
+        </div>
+        <div class="step">
+          <span class="step-number">3</span><span class="step-title">Select your site</span>
+          <div class="step-detail">Tap on your home's site name to see connected devices, Wi-Fi settings, and camera feeds.</div>
+        </div>
+      </div>
+      <div class="tip">You can also access UniFi from a web browser by going to <strong>unifi.ui.com</strong> and logging in.</div>
+    </div>
+  </div>
+
+  <!-- UNIFI TRANSFER OWNERSHIP -->
+  <div class="section" data-category="unifi">
+    <div class="section-header" onclick="toggleSection(this)">
+      <h2><span class="icon">🔄</span> UniFi — Transfer Ownership (Step by Step)</h2>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="warning">Only do this if you're giving full control of the UniFi system to someone else (e.g., new homeowner). This cannot be easily undone.</div>
+
+      <div class="subsection">
+        <h3>Before You Start</h3>
+        <p>The new owner needs a free Ubiquiti account. Have them sign up at <strong>ui.com</strong> before you begin.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>Step-by-Step Instructions</h3>
+
+        <div class="step">
+          <span class="step-number">1</span><span class="step-title">Open UniFi Settings</span>
+          <div class="step-detail">Log into your UniFi Console (via the app or <strong>unifi.ui.com</strong>). Go to <strong>Settings</strong> (gear icon).</div>
+        </div>
+
+        <div class="step">
+          <span class="step-number">2</span><span class="step-title">Add the new user as an Admin</span>
+          <div class="step-detail">Go to <strong>Admins &amp; Users</strong> tab. Tap <strong>"Add Admin"</strong>. Enter the new person's Ubiquiti account email. Set their role to <strong>"Administrator"</strong>. Send the invitation.</div>
+        </div>
+
+        <div class="step">
+          <span class="step-number">3</span><span class="step-title">New user accepts the invitation</span>
+          <div class="step-detail">The new user will receive an email invitation. They must click the link and log in with their Ubiquiti account. Ask them to confirm they can see the site in their UniFi app before proceeding.</div>
+        </div>
+
+        <div class="step">
+          <span class="step-number">4</span><span class="step-title">Transfer ownership</span>
+          <div class="step-detail">Go to <strong>Settings → Control Plane</strong> (or System Settings on some versions). Find and click <strong>"Transfer Ownership"</strong>. Select the new admin from the dropdown. Enter your current password to confirm.</div>
+        </div>
+
+        <div class="step">
+          <span class="step-number">5</span><span class="step-title">Verify the transfer</span>
+          <div class="step-detail">The new owner should log in and verify they have full control. You'll be downgraded to a regular Admin (they can remove you entirely if needed).</div>
+        </div>
+      </div>
+
+      <div class="warning">Make sure you create a backup of your UniFi settings before transferring. Go to <strong>Settings → System → Backups</strong> and download a backup file.</div>
+
+      <div class="tip">If you just want to give someone access without transferring full ownership, simply add them as an Admin (steps 1-3) and skip the transfer step.</div>
+    </div>
+  </div>
+
+  <!-- UNIFI PROTECT -->
+  <div class="section" data-category="unifi">
+    <div class="section-header" onclick="toggleSection(this)">
+      <h2><span class="icon">📹</span> UniFi Protect — Camera Access</h2>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>Viewing Cameras</h3>
+        <p>Camera feeds are available in two places:</p>
+        <div class="step">
+          <span class="step-number">1</span><span class="step-title">Home Assistant (recommended)</span>
+          <div class="step-detail">Open the Home Assistant app or dashboard. Camera feeds are integrated and visible on your dashboard. You can view live feeds and recorded clips here.</div>
+        </div>
+        <div class="step">
+          <span class="step-number">2</span><span class="step-title">UniFi Protect app</span>
+          <div class="step-detail">Open the UniFi app and switch to the "Protect" section. This gives you access to camera settings, motion zones, and full recording playback.</div>
+        </div>
+      </div>
+      <div class="tip">Home Assistant shows you camera feeds alongside everything else (locks, lights, etc.). Use the UniFi Protect app only when you need to change camera settings like motion sensitivity or recording schedules.</div>
+    </div>
+  </div>
+
+  <!-- AQARA LOCK -->
+  <div class="section" data-category="lock">
+    <div class="section-header" onclick="toggleSection(this)">
+      <h2><span class="icon">🔒</span> Aqara Smart Lock — Daily Use</h2>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>How the Lock Works</h3>
+        <p>Your Aqara smart lock connects through a chain: <strong>Lock → Aqara Hub (Zigbee) → Matter → Home Assistant</strong>. This means you can lock/unlock from Home Assistant, but PIN code management must be done through the <strong>Aqara Home app</strong>.</p>
+      </div>
+      <div class="subsection">
+        <h3>Unlocking the Door</h3>
+        <p>You have several ways to unlock:</p>
+        <ul class="device-list">
+          <li><span class="dl-icon">🔢</span><span class="dl-name">PIN Code</span><span class="dl-desc">Enter your code on the keypad</span></li>
+          <li><span class="dl-icon">👆</span><span class="dl-name">Fingerprint</span><span class="dl-desc">If enrolled in the Aqara app</span></li>
+          <li><span class="dl-icon">📱</span><span class="dl-name">Home Assistant</span><span class="dl-desc">Tap lock/unlock in the app</span></li>
+          <li><span class="dl-icon">🔑</span><span class="dl-name">Physical Key</span><span class="dl-desc">Emergency backup</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- AQARA CHANGE CODES -->
+  <div class="section" data-category="lock">
+    <div class="section-header" onclick="toggleSection(this)">
+      <h2><span class="icon">🔑</span> Aqara Lock — Change Door Codes (Step by Step)</h2>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="warning">PIN codes can only be managed through the <strong>Aqara Home app</strong>, not through Home Assistant. You must be near the lock (Bluetooth range) to make changes.</div>
+
+      <div class="subsection">
+        <h3>Adding a New PIN Code</h3>
+        <div class="step">
+          <span class="step-number">1</span><span class="step-title">Open the Aqara Home app</span>
+          <div class="step-detail">Download "Aqara Home" from the App Store or Google Play if you haven't already. Log in with your Aqara account.</div>
+        </div>
+        <div class="step">
+          <span class="step-number">2</span><span class="step-title">Select your lock</span>
+          <div class="step-detail">On the home screen, tap on your smart lock device. Make sure you're within Bluetooth range of the lock (within the same room or nearby).</div>
+        </div>
+        <div class="step">
+          <span class="step-number">3</span><span class="step-title">Go to User Management</span>
+          <div class="step-detail">Tap the <strong>settings gear icon</strong>, then tap <strong>"User Management"</strong> or <strong>"Password Management"</strong> (wording varies by lock model).</div>
+        </div>
+        <div class="step">
+          <span class="step-number">4</span><span class="step-title">Add a new PIN</span>
+          <div class="step-detail">Tap <strong>"Add Password"</strong> or <strong>"Add PIN Code"</strong>. Choose the type:
+            <br>• <strong>Permanent</strong> — always works (for family members)
+            <br>• <strong>Temporary/One-time</strong> — expires after one use or after a set time (for guests)
+            <br>• <strong>Periodic</strong> — only works during certain hours/days</div>
+        </div>
+        <div class="step">
+          <span class="step-number">5</span><span class="step-title">Enter the new code</span>
+          <div class="step-detail">Type in the PIN code (usually 4-10 digits). Give it a name so you know who it belongs to (e.g., "Mom", "Cleaning service", "Guest").</div>
+        </div>
+        <div class="step">
+          <span class="step-number">6</span><span class="step-title">Save and test</span>
+          <div class="step-detail">Tap <strong>Save</strong>. Walk to the door and test the new code right away to make sure it works.</div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>Changing an Existing PIN Code</h3>
+        <div class="step">
+          <span class="step-number">1</span><span class="step-title">Open Aqara Home → Your Lock → User Management</span>
+          <div class="step-detail">Same as above — navigate to the password/user management section.</div>
+        </div>
+        <div class="step">
+          <span class="step-number">2</span><span class="step-title">Tap the code you want to change</span>
+          <div class="step-detail">Find the user/code in the list and tap on it.</div>
+        </div>
+        <div class="step">
+          <span class="step-number">3</span><span class="step-title">Edit or delete</span>
+          <div class="step-detail">Tap <strong>"Edit"</strong> to change the code, or <strong>"Delete"</strong> to remove it entirely. Save your changes.</div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>Creating a Temporary Code for Guests</h3>
+        <div class="step">
+          <span class="step-number">1</span><span class="step-title">Go to User Management in the Aqara app</span>
+          <div class="step-detail">Follow steps 1-3 from "Adding a New PIN Code" above.</div>
+        </div>
+        <div class="step">
+          <span class="step-number">2</span><span class="step-title">Choose "One-time" or "Periodic"</span>
+          <div class="step-detail"><strong>One-time:</strong> The code works once and then expires automatically.<br><strong>Periodic:</strong> Set specific days and hours when the code is active (great for recurring visitors like a cleaning service).</div>
+        </div>
+        <div class="step">
+          <span class="step-number">3</span><span class="step-title">Share the code</span>
+          <div class="step-detail">Text or tell your guest the code. It will automatically stop working after the time/use limit.</div>
+        </div>
+      </div>
+
+      <div class="tip">You can add fingerprints the same way — go to User Management and choose "Add Fingerprint" instead of "Add Password." Follow the on-screen prompts to scan.</div>
+      <div class="warning">Always keep at least one admin PIN code active. If you delete all codes, you'll need the physical key to get in and will have to re-add codes via the Aqara app.</div>
+    </div>
+  </div>
+
+  <!-- KASA SWITCHES -->
+  <div class="section" data-category="switches">
+    <div class="section-header" onclick="toggleSection(this)">
+      <h2><span class="icon">💡</span> Kasa Switches — Light Control</h2>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>How Kasa Switches Work</h3>
+        <p>Your Kasa smart light switches connect to Home Assistant through the <strong>Matter protocol</strong>. Home Assistant acts as the Matter controller, so you control the switches entirely from Home Assistant — no Kasa app needed for daily use.</p>
+      </div>
+      <div class="subsection">
+        <h3>Controlling Lights</h3>
+        <div class="step">
+          <span class="step-number">1</span><span class="step-title">Physical switch</span>
+          <div class="step-detail">Just press the switch on the wall like a normal light switch. It still works manually.</div>
+        </div>
+        <div class="step">
+          <span class="step-number">2</span><span class="step-title">Home Assistant app</span>
+          <div class="step-detail">Open the Home Assistant app on your phone. Find the light in your dashboard and tap to toggle on/off. If the switch is a dimmer, you can slide to adjust brightness.</div>
+        </div>
+        <div class="step">
+          <span class="step-number">3</span><span class="step-title">Voice control (if set up)</span>
+          <div class="step-detail">If Home Assistant is connected to a voice assistant (Siri, Alexa, Google), you can say things like "Turn off the kitchen lights."</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <h3>Adding a New Kasa Switch</h3>
+        <div class="step">
+          <span class="step-number">1</span><span class="step-title">Install the switch physically</span>
+          <div class="step-detail">Turn off the breaker, replace the old switch with the Kasa switch, restore power.</div>
+        </div>
+        <div class="step">
+          <span class="step-number">2</span><span class="step-title">Set up in Kasa app first</span>
+          <div class="step-detail">Download the Kasa app, create a TP-Link account, and add the switch. Enable <strong>Matter</strong> in the switch settings and get the Matter pairing code.</div>
+        </div>
+        <div class="step">
+          <span class="step-number">3</span><span class="step-title">Add to Home Assistant via Matter</span>
+          <div class="step-detail">In Home Assistant, go to <strong>Settings → Devices &amp; Services → Add Integration → Matter</strong>. Enter the Matter pairing code from the Kasa app. The switch will appear in your dashboard.</div>
+        </div>
+      </div>
+      <div class="tip">Once added to Home Assistant via Matter, you can control the switch even without internet — Matter works locally on your network.</div>
+    </div>
+  </div>
+
+  <!-- HOME ASSISTANT -->
+  <div class="section" data-category="ha">
+    <div class="section-header" onclick="toggleSection(this)">
+      <h2><span class="icon">🏠</span> Home Assistant — Your Central Hub</h2>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <h3>What is Home Assistant?</h3>
+        <p>Home Assistant is the "brain" of your smart home. It connects to all your devices (UniFi, cameras, locks, switches) and lets you control everything from one place. It also runs automations — for example, automatically turning on porch lights at sunset or locking the door at bedtime.</p>
+      </div>
+      <div class="subsection">
+        <h3>How to Access</h3>
+        <div class="step">
+          <span class="step-number">1</span><span class="step-title">Phone app (recommended)</span>
+          <div class="step-detail">Download "Home Assistant" from the App Store or Google Play. Enter your Home Assistant URL when prompted. Log in with your username and password.</div>
+        </div>
+        <div class="step">
+          <span class="step-number">2</span><span class="step-title">Web browser</span>
+          <div class="step-detail">Open a browser and go to your Home Assistant URL (usually <strong>http://homeassistant.local:8123</strong> on your local network).</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <h3>Key Things You Can Do</h3>
+        <ul class="device-list">
+          <li><span class="dl-icon">💡</span><span class="dl-name">Control lights</span><span class="dl-desc">On/off, dimming, schedules</span></li>
+          <li><span class="dl-icon">🔒</span><span class="dl-name">Lock/unlock door</span><span class="dl-desc">Remotely via the app</span></li>
+          <li><span class="dl-icon">📹</span><span class="dl-name">View cameras</span><span class="dl-desc">Live feeds on your dashboard</span></li>
+          <li><span class="dl-icon">📡</span><span class="dl-name">See network devices</span><span class="dl-desc">Who's connected to Wi-Fi</span></li>
+          <li><span class="dl-icon">⚡</span><span class="dl-name">Automations</span><span class="dl-desc">Automatic rules (e.g., lights at sunset)</span></li>
+        </ul>
+      </div>
+      <div class="tip">Home Assistant handles everything day-to-day. You only need the UniFi app for network admin tasks and the Aqara app for managing lock PIN codes.</div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section" data-category="faq">
+    <div class="section-header" onclick="toggleSection(this)">
+      <h2><span class="icon">❓</span> Frequently Asked Questions</h2>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="faq">
+        <div class="faq-q" onclick="toggleFaq(this)">What apps do I need on my phone?<span>+</span></div>
+        <div class="faq-a"><strong>Home Assistant</strong> — for daily control of everything.<br><strong>Aqara Home</strong> — only for managing lock PIN codes and fingerprints.<br><strong>UniFi</strong> — only for network admin or viewing camera recordings.<br>That's it — three apps total, but you'll mostly just use Home Assistant.</div>
+      </div>
+      <div class="faq">
+        <div class="faq-q" onclick="toggleFaq(this)">The internet is down. What still works?<span>+</span></div>
+        <div class="faq-a">Almost everything! Matter devices (Kasa switches, Aqara lock via hub) work locally on your network — no internet needed. Your lock PIN codes still work on the keypad. Cameras will still record locally. The only thing that won't work is remote access from outside your home.</div>
+      </div>
+      <div class="faq">
+        <div class="faq-q" onclick="toggleFaq(this)">How do I change the Wi-Fi password?<span>+</span></div>
+        <div class="faq-a">Open the UniFi app → Settings → WiFi → tap your network name → change the password → Save. All devices will need to reconnect with the new password.</div>
+      </div>
+      <div class="faq">
+        <div class="faq-q" onclick="toggleFaq(this)">Can I give someone temporary access to the door?<span>+</span></div>
+        <div class="faq-a">Yes! In the Aqara Home app, go to your lock → User Management → Add Password → choose "One-time" or "Periodic." One-time codes expire after a single use. Periodic codes only work during the days/hours you set.</div>
+      </div>
+      <div class="faq">
+        <div class="faq-q" onclick="toggleFaq(this)">What is Matter?<span>+</span></div>
+        <div class="faq-a">Matter is a universal smart home language that lets devices from different brands talk to each other. Your Kasa switches and Aqara lock both use Matter to communicate with Home Assistant. The big benefit: everything works locally on your network, even without internet.</div>
+      </div>
+      <div class="faq">
+        <div class="faq-q" onclick="toggleFaq(this)">The lock isn't responding in Home Assistant. What do I do?<span>+</span></div>
+        <div class="faq-a">Check these in order:<br>1. Is the Aqara Hub powered on? (check the LED)<br>2. Is the lock battery charged? (low battery can cause disconnects)<br>3. Restart the Aqara Hub by unplugging and plugging back in<br>4. In Home Assistant, go to Settings → Devices → find the lock and check its status<br>If nothing works, re-pair the lock through the Aqara app and re-add via Matter.</div>
+      </div>
+      <div class="faq">
+        <div class="faq-q" onclick="toggleFaq(this)">How do I add a new person to the system?<span>+</span></div>
+        <div class="faq-a"><strong>For door access:</strong> Add a PIN code in the Aqara app (see "Change Door Codes" section).<br><strong>For Home Assistant:</strong> Settings → People → Add Person. Create a username and password for them.<br><strong>For UniFi (network admin):</strong> Settings → Admins → Add Admin. They need a UI.com account.</div>
+      </div>
+      <div class="faq">
+        <div class="faq-q" onclick="toggleFaq(this)">Do I need to update anything?<span>+</span></div>
+        <div class="faq-a">Home Assistant, UniFi, and the Aqara Hub receive automatic updates. You'll see a notification in each app when an update is available. It's a good idea to update when prompted, but not while you're having guests — updates occasionally require devices to restart.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function toggleSection(header) {
+  const body = header.nextElementSibling;
+  const arrow = header.querySelector('.arrow');
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
+
+function toggleFaq(q) {
+  const a = q.nextElementSibling;
+  const icon = q.querySelector('span:last-child');
+  a.classList.toggle('open');
+  icon.textContent = a.classList.contains('open') ? '−' : '+';
+}
+
+// Tab filtering
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const filter = tab.dataset.filter;
+    document.querySelectorAll('.section').forEach(s => {
+      if (filter === 'all' || s.dataset.category === filter) {
+        s.classList.remove('hidden');
+      } else {
+        s.classList.add('hidden');
+      }
+    });
+  });
+});
+
+// Search
+document.getElementById('searchBox').addEventListener('input', (e) => {
+  const query = e.target.value.toLowerCase();
+  // Reset tab to All when searching
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelector('.tab[data-filter="all"]').classList.add('active');
+
+  document.querySelectorAll('.section').forEach(s => {
+    if (!query) {
+      s.classList.remove('hidden');
+      return;
+    }
+    const text = s.textContent.toLowerCase();
+    if (text.includes(query)) {
+      s.classList.remove('hidden');
+      // Auto-open matching sections
+      const body = s.querySelector('.section-body');
+      const arrow = s.querySelector('.arrow');
+      if (!body.classList.contains('open')) {
+        body.classList.add('open');
+        arrow.classList.add('open');
+      }
+    } else {
+      s.classList.add('hidden');
+    }
+  });
+});
+</script>
+</body>
+</html>

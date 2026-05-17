@@ -1,0 +1,31 @@
+name: Deploy Docs to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy Static Site
+    runs-on: ubuntu-latest
+    environment: cloudflare
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Stage site
+        run: |
+          mkdir -p _site
+          cp index.html _site/
+
+      - name: Deploy to Cloudflare Pages
+        run: npx wrangler pages deploy _site --project-name=smart-home-docs --branch=main
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
