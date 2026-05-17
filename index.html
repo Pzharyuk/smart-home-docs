@@ -58,6 +58,10 @@
   .faq-a.open { display: block; }
   .device-illustrations { display: flex; justify-content: center; gap: 40px; margin: 30px 0; flex-wrap: wrap; }
   .device-illustrations svg { max-width: 280px; }
+  .helpful-links { margin: 16px 0; padding: 16px; background: #0f1923; border-radius: 10px; border: 1px solid #2a3a4a; }
+  .helpful-links h4 { color: #4a9eda; margin-bottom: 8px; font-size: 0.95em; }
+  .helpful-links a { color: #4a9eda; text-decoration: none; display: block; padding: 4px 0; font-size: 0.9em; }
+  .helpful-links a:hover { text-decoration: underline; color: #7eb8da; }
   @media (max-width: 600px) {
     .container { padding: 12px; }
     .tabs { gap: 6px; }
@@ -86,6 +90,7 @@
   <div class="tab" data-filter="lock"><svg viewBox="0 0 20 20" fill="none"><rect x="4" y="9" width="12" height="9" rx="2" stroke="#7eb8da" stroke-width="1.5"/><path d="M7 9V6a3 3 0 016 0v3" stroke="#7eb8da" stroke-width="1.5" fill="none"/><circle cx="10" cy="14" r="1.5" fill="#7eb8da"/></svg>Aqara Lock</div>
   <div class="tab" data-filter="switches"><svg viewBox="0 0 20 20" fill="none"><rect x="5" y="2" width="10" height="16" rx="3" stroke="#7eb8da" stroke-width="1.5"/><circle cx="10" cy="8" r="2.5" fill="#7eb8da"/><line x1="10" y1="12" x2="10" y2="15" stroke="#7eb8da" stroke-width="1.5" stroke-linecap="round"/></svg>Kasa Switches</div>
   <div class="tab" data-filter="ha"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2L2 9v8a2 2 0 002 2h12a2 2 0 002-2V9L10 2z" stroke="#7eb8da" stroke-width="1.5"/><rect x="7" y="12" width="6" height="7" rx="1" fill="#7eb8da" opacity="0.4"/></svg>Home Assistant</div>
+  <div class="tab" data-filter="ipad"><svg viewBox="0 0 20 20" fill="none"><rect x="4" y="2" width="12" height="16" rx="2" stroke="#7eb8da" stroke-width="1.5"/><circle cx="10" cy="16" r="0.8" fill="#7eb8da"/><rect x="6" y="4" width="8" height="10" rx="1" fill="#7eb8da" opacity="0.15"/></svg>iPad Panel</div>
   <div class="tab" data-filter="faq"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7eb8da" stroke-width="1.5"/><path d="M8 7.5a2.5 2.5 0 013.5 2.3c0 1.2-1.5 1.5-1.5 2.7" stroke="#7eb8da" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="10" cy="15" r="0.8" fill="#7eb8da"/></svg>FAQ</div>
 </div>
 
@@ -101,7 +106,7 @@
       <div class="overview-card">
         <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="6" fill="#4a9eda"/><path d="M24 8a16 16 0 010 32" stroke="#4a9eda" stroke-width="2.5" fill="none"/><path d="M24 14a10 10 0 010 20" stroke="#4a9eda" stroke-width="2" fill="none" opacity="0.6"/></svg>
         <div class="card-title">UniFi Network</div>
-        <div class="card-desc">Wi-Fi, network management, device tracking</div>
+        <div class="card-desc">Ubiquiti UCG-MAX Cloud Gateway Max</div>
       </div>
       <div class="overview-card">
         <svg viewBox="0 0 48 48" fill="none"><rect x="6" y="10" width="36" height="24" rx="3" stroke="#4a9eda" stroke-width="2.5"/><circle cx="15" cy="22" r="4" stroke="#4a9eda" stroke-width="2"/><circle cx="15" cy="22" r="1.5" fill="#4a9eda"/><path d="M24 14h14M24 22h14M24 30h14" stroke="#4a9eda" stroke-width="1.5" opacity="0.4"/><rect x="20" y="34" width="8" height="4" rx="1" fill="#4a9eda" opacity="0.3"/></svg>
@@ -111,64 +116,232 @@
       <div class="overview-card">
         <svg viewBox="0 0 48 48" fill="none"><rect x="14" y="6" width="20" height="36" rx="4" stroke="#4a9eda" stroke-width="2.5"/><rect x="19" y="14" width="10" height="12" rx="2" stroke="#4a9eda" stroke-width="1.5" opacity="0.6"/><circle cx="24" cy="34" r="3" stroke="#4a9eda" stroke-width="1.5"/><circle cx="24" cy="34" r="1" fill="#4a9eda"/><line x1="21" y1="17" x2="23" y2="17" stroke="#4a9eda" stroke-width="1" opacity="0.5"/><line x1="25" y1="17" x2="27" y2="17" stroke="#4a9eda" stroke-width="1" opacity="0.5"/><line x1="21" y1="20" x2="23" y2="20" stroke="#4a9eda" stroke-width="1" opacity="0.5"/><line x1="25" y1="20" x2="27" y2="20" stroke="#4a9eda" stroke-width="1" opacity="0.5"/><line x1="21" y1="23" x2="23" y2="23" stroke="#4a9eda" stroke-width="1" opacity="0.5"/><line x1="25" y1="23" x2="27" y2="23" stroke="#4a9eda" stroke-width="1" opacity="0.5"/></svg>
         <div class="card-title">Aqara Smart Lock</div>
-        <div class="card-desc">Door lock with PIN codes, connected via Matter through Aqara Hub</div>
+        <div class="card-desc">U100 lock via Aqara Hub M3 (Matter)</div>
       </div>
       <div class="overview-card">
         <svg viewBox="0 0 48 48" fill="none"><rect x="14" y="4" width="20" height="40" rx="4" stroke="#4a9eda" stroke-width="2.5"/><circle cx="24" cy="16" r="5" stroke="#4a9eda" stroke-width="2"/><circle cx="24" cy="16" r="2" fill="#4a9eda"/><line x1="24" y1="26" x2="24" y2="36" stroke="#4a9eda" stroke-width="2" stroke-linecap="round"/></svg>
         <div class="card-title">Kasa Switches</div>
-        <div class="card-desc">Light switches connected via Matter protocol</div>
+        <div class="card-desc">Kasa KS220 Matter switches (2.4GHz)</div>
       </div>
     </div>
 
-    <!-- Device Illustrations -->
+    <!-- App UI Mockup Illustrations -->
     <div class="device-illustrations">
-      <svg viewBox="0 0 200 380" fill="none">
-        <text x="100" y="20" text-anchor="middle" fill="#7eb8da" font-family="-apple-system,sans-serif" font-size="12" font-weight="600">UniFi Dream Machine</text>
-        <ellipse cx="100" cy="340" rx="55" ry="8" fill="#888" opacity="0.2"/>
-        <rect x="58" y="60" width="84" height="260" rx="42" fill="#d8d8d8"/>
-        <ellipse cx="100" cy="68" rx="42" ry="14" fill="#e8e8e8"/>
-        <ellipse cx="100" cy="66" rx="38" ry="11" fill="#f0f0f0"/>
-        <ellipse cx="100" cy="88" rx="36" ry="5" fill="none" stroke="#4a9eda" stroke-width="2.5" opacity="0.9"/>
-        <ellipse cx="100" cy="88" rx="36" ry="5" fill="none" stroke="#4a9eda" stroke-width="1" opacity="0.4"><animate attributeName="opacity" values="0.4;0.8;0.4" dur="3s" repeatCount="indefinite"/></ellipse>
-        <line x1="72" y1="130" x2="128" y2="130" stroke="#bbb" stroke-width="0.5"/><line x1="70" y1="138" x2="130" y2="138" stroke="#bbb" stroke-width="0.5"/><line x1="69" y1="146" x2="131" y2="146" stroke="#bbb" stroke-width="0.5"/><line x1="68" y1="154" x2="132" y2="154" stroke="#bbb" stroke-width="0.5"/><line x1="68" y1="162" x2="132" y2="162" stroke="#bbb" stroke-width="0.5"/><line x1="68" y1="170" x2="132" y2="170" stroke="#bbb" stroke-width="0.5"/><line x1="68" y1="178" x2="132" y2="178" stroke="#bbb" stroke-width="0.5"/><line x1="69" y1="186" x2="131" y2="186" stroke="#bbb" stroke-width="0.5"/><line x1="70" y1="194" x2="130" y2="194" stroke="#bbb" stroke-width="0.5"/>
-        <circle cx="100" cy="250" r="12" fill="none" stroke="#aaa" stroke-width="1.2"/>
-        <text x="100" y="254" text-anchor="middle" fill="#999" font-family="sans-serif" font-size="11" font-weight="700">U</text>
-        <ellipse cx="100" cy="318" rx="42" ry="7" fill="#c0c0c0"/>
-        <rect x="58" y="310" width="84" height="9" fill="#c8c8c8"/>
-        <rect x="76" y="322" width="6" height="3" rx="1" fill="#666"/><rect x="86" y="322" width="6" height="3" rx="1" fill="#666"/><rect x="96" y="322" width="6" height="3" rx="1" fill="#666"/><rect x="106" y="322" width="6" height="3" rx="1" fill="#666"/><rect x="116" y="322" width="6" height="3" rx="1" fill="#4a9eda"/>
-        <text x="100" y="365" text-anchor="middle" fill="#5a7a8a" font-family="-apple-system,sans-serif" font-size="10">Router + AP + Switch</text>
+      <!-- Aqara Home App - PIN Management -->
+      <svg viewBox="0 0 220 420" fill="none">
+        <text x="110" y="16" text-anchor="middle" fill="#7eb8da" font-family="-apple-system,sans-serif" font-size="11" font-weight="600">Aqara Home App</text>
+        <!-- Phone frame -->
+        <rect x="20" y="24" width="180" height="380" rx="20" fill="#0f1923" stroke="#3a4a5a" stroke-width="2"/>
+        <!-- Status bar -->
+        <rect x="20" y="24" width="180" height="30" rx="20" fill="#0f1923"/>
+        <rect x="20" y="44" width="180" height="10" fill="#0f1923"/>
+        <text x="50" y="43" fill="#7a9aaa" font-family="sans-serif" font-size="8">9:41</text>
+        <rect x="150" y="36" width="16" height="8" rx="2" fill="#7a9aaa" opacity="0.5"/>
+        <rect x="151" y="37" width="12" height="6" rx="1" fill="#7a9aaa" opacity="0.7"/>
+        <!-- Notch -->
+        <rect x="80" y="26" width="60" height="6" rx="3" fill="#1a2733"/>
+        <!-- Header bar -->
+        <rect x="30" y="58" width="160" height="36" rx="0" fill="#1a2733"/>
+        <text x="110" y="81" text-anchor="middle" fill="#fff" font-family="-apple-system,sans-serif" font-size="11" font-weight="600">PIN Management</text>
+        <text x="40" y="80" fill="#4a9eda" font-family="sans-serif" font-size="10">&lt;</text>
+        <!-- User list -->
+        <!-- User 1 -->
+        <rect x="30" y="102" width="160" height="50" rx="8" fill="#1a2733"/>
+        <circle cx="52" cy="127" r="12" fill="#1a5276"/>
+        <text x="52" y="131" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="10" font-weight="600">P</text>
+        <text x="72" y="121" fill="#fff" font-family="-apple-system,sans-serif" font-size="10" font-weight="500">Paul</text>
+        <text x="72" y="135" fill="#7a9aaa" font-family="sans-serif" font-size="8">PIN: ****  |  Permanent</text>
+        <circle cx="178" cy="127" r="6" fill="#2a5a3a"/><text x="178" y="130" text-anchor="middle" fill="#6adf8a" font-family="sans-serif" font-size="8">A</text>
+        <!-- User 2 -->
+        <rect x="30" y="160" width="160" height="50" rx="8" fill="#1a2733"/>
+        <circle cx="52" cy="185" r="12" fill="#1a5276"/>
+        <text x="52" y="189" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="10" font-weight="600">M</text>
+        <text x="72" y="179" fill="#fff" font-family="-apple-system,sans-serif" font-size="10" font-weight="500">Mom</text>
+        <text x="72" y="193" fill="#7a9aaa" font-family="sans-serif" font-size="8">PIN: ****  |  Permanent</text>
+        <!-- User 3 -->
+        <rect x="30" y="218" width="160" height="50" rx="8" fill="#1a2733"/>
+        <circle cx="52" cy="243" r="12" fill="#1a5276"/>
+        <text x="52" y="247" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="10" font-weight="600">G</text>
+        <text x="72" y="237" fill="#fff" font-family="-apple-system,sans-serif" font-size="10" font-weight="500">Guest</text>
+        <text x="72" y="251" fill="#7a9aaa" font-family="sans-serif" font-size="8">PIN: ****  |  One-time</text>
+        <circle cx="178" cy="243" r="6" fill="#3a2a1a"/><text x="178" y="246" text-anchor="middle" fill="#daa520" font-family="sans-serif" font-size="7">T</text>
+        <!-- User 4 -->
+        <rect x="30" y="276" width="160" height="50" rx="8" fill="#1a2733"/>
+        <circle cx="52" cy="301" r="12" fill="#1a5276"/>
+        <text x="52" y="305" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="10" font-weight="600">C</text>
+        <text x="72" y="295" fill="#fff" font-family="-apple-system,sans-serif" font-size="10" font-weight="500">Cleaner</text>
+        <text x="72" y="309" fill="#7a9aaa" font-family="sans-serif" font-size="8">PIN: ****  |  Periodic</text>
+        <circle cx="178" cy="301" r="6" fill="#1a5276"/><text x="178" y="304" text-anchor="middle" fill="#4a9eda" font-family="sans-serif" font-size="7">P</text>
+        <!-- Add button -->
+        <rect x="50" y="340" width="120" height="36" rx="18" fill="#4a9eda"/>
+        <text x="110" y="363" text-anchor="middle" fill="#fff" font-family="-apple-system,sans-serif" font-size="11" font-weight="600">+ Add PIN Code</text>
+        <!-- Bottom nav bar -->
+        <rect x="20" y="384" width="180" height="20" rx="0" fill="#1a2733"/>
+        <line x1="20" y1="384" x2="200" y2="384" stroke="#2a3a4a" stroke-width="0.5"/>
+        <rect x="90" y="398" width="40" height="4" rx="2" fill="#5a7a8a"/>
+        <text x="110" y="415" text-anchor="middle" fill="#5a7a8a" font-family="-apple-system,sans-serif" font-size="9">PIN code management screen</text>
       </svg>
-      <svg viewBox="0 0 200 380" fill="none">
-        <text x="100" y="20" text-anchor="middle" fill="#7eb8da" font-family="-apple-system,sans-serif" font-size="12" font-weight="600">Aqara Smart Lock</text>
-        <rect x="45" y="35" width="110" height="290" rx="14" fill="#222"/>
-        <rect x="52" y="42" width="96" height="276" rx="10" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
-        <circle cx="100" cy="50" r="4" fill="#4adf6a"><animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite"/></circle>
-        <text x="100" y="62" text-anchor="middle" fill="#4adf6a" font-size="6" font-family="sans-serif">LOCKED</text>
-        <rect x="68" y="72" width="64" height="115" rx="6" fill="#1e1e1e" stroke="#444" stroke-width="0.5"/>
-        <rect x="76" y="82" width="14" height="14" rx="3" fill="#333"/><text x="83" y="93" text-anchor="middle" fill="#888" font-size="9" font-family="sans-serif">1</text>
-        <rect x="93" y="82" width="14" height="14" rx="3" fill="#333"/><text x="100" y="93" text-anchor="middle" fill="#888" font-size="9" font-family="sans-serif">2</text>
-        <rect x="110" y="82" width="14" height="14" rx="3" fill="#333"/><text x="117" y="93" text-anchor="middle" fill="#888" font-size="9" font-family="sans-serif">3</text>
-        <rect x="76" y="100" width="14" height="14" rx="3" fill="#333"/><text x="83" y="111" text-anchor="middle" fill="#888" font-size="9" font-family="sans-serif">4</text>
-        <rect x="93" y="100" width="14" height="14" rx="3" fill="#333"/><text x="100" y="111" text-anchor="middle" fill="#888" font-size="9" font-family="sans-serif">5</text>
-        <rect x="110" y="100" width="14" height="14" rx="3" fill="#333"/><text x="117" y="111" text-anchor="middle" fill="#888" font-size="9" font-family="sans-serif">6</text>
-        <rect x="76" y="118" width="14" height="14" rx="3" fill="#333"/><text x="83" y="129" text-anchor="middle" fill="#888" font-size="9" font-family="sans-serif">7</text>
-        <rect x="93" y="118" width="14" height="14" rx="3" fill="#333"/><text x="100" y="129" text-anchor="middle" fill="#888" font-size="9" font-family="sans-serif">8</text>
-        <rect x="110" y="118" width="14" height="14" rx="3" fill="#333"/><text x="117" y="129" text-anchor="middle" fill="#888" font-size="9" font-family="sans-serif">9</text>
-        <rect x="76" y="136" width="14" height="14" rx="3" fill="#333"/><text x="83" y="147" text-anchor="middle" fill="#888" font-size="9" font-family="sans-serif">*</text>
-        <rect x="93" y="136" width="14" height="14" rx="3" fill="#333"/><text x="100" y="147" text-anchor="middle" fill="#888" font-size="9" font-family="sans-serif">0</text>
-        <rect x="110" y="136" width="14" height="14" rx="3" fill="#333"/><text x="117" y="147" text-anchor="middle" fill="#888" font-size="9" font-family="sans-serif">#</text>
-        <circle cx="100" cy="215" r="15" fill="#2a2a2a" stroke="#444" stroke-width="0.8"/>
-        <path d="M94 208Q100 204 106 208" fill="none" stroke="#555" stroke-width="0.5"/>
-        <path d="M92 212Q100 207 108 212" fill="none" stroke="#555" stroke-width="0.5"/>
-        <path d="M91 216Q100 210 109 216" fill="none" stroke="#555" stroke-width="0.5"/>
-        <path d="M92 220Q100 214 108 220" fill="none" stroke="#555" stroke-width="0.5"/>
-        <path d="M94 224Q100 219 106 224" fill="none" stroke="#555" stroke-width="0.5"/>
-        <text x="100" y="240" text-anchor="middle" fill="#555" font-size="7" font-family="sans-serif">FINGERPRINT</text>
-        <text x="100" y="275" text-anchor="middle" fill="#444" font-family="sans-serif" font-size="10" font-weight="600" letter-spacing="2">AQARA</text>
-        <circle cx="100" cy="300" r="5" fill="#111" stroke="#444" stroke-width="0.5"/>
-        <rect x="98.5" y="300" width="3" height="8" rx="1" fill="#111"/>
-        <text x="100" y="350" text-anchor="middle" fill="#5a7a8a" font-family="-apple-system,sans-serif" font-size="10">PIN + Fingerprint + Key</text>
-        <text x="100" y="365" text-anchor="middle" fill="#5a7a8a" font-family="-apple-system,sans-serif" font-size="9">Matter &rarr; Home Assistant</text>
+
+      <!-- Kasa App - Matter Setup -->
+      <svg viewBox="0 0 220 420" fill="none">
+        <text x="110" y="16" text-anchor="middle" fill="#7eb8da" font-family="-apple-system,sans-serif" font-size="11" font-weight="600">Kasa App</text>
+        <!-- Phone frame -->
+        <rect x="20" y="24" width="180" height="380" rx="20" fill="#0f1923" stroke="#3a4a5a" stroke-width="2"/>
+        <!-- Status bar -->
+        <rect x="20" y="24" width="180" height="30" rx="20" fill="#0f1923"/>
+        <rect x="20" y="44" width="180" height="10" fill="#0f1923"/>
+        <text x="50" y="43" fill="#7a9aaa" font-family="sans-serif" font-size="8">9:41</text>
+        <rect x="150" y="36" width="16" height="8" rx="2" fill="#7a9aaa" opacity="0.5"/>
+        <rect x="151" y="37" width="12" height="6" rx="1" fill="#7a9aaa" opacity="0.7"/>
+        <rect x="80" y="26" width="60" height="6" rx="3" fill="#1a2733"/>
+        <!-- Header -->
+        <rect x="30" y="58" width="160" height="36" rx="0" fill="#1a2733"/>
+        <text x="110" y="81" text-anchor="middle" fill="#fff" font-family="-apple-system,sans-serif" font-size="11" font-weight="600">Matter Setup</text>
+        <text x="40" y="80" fill="#4a9eda" font-family="sans-serif" font-size="10">&lt;</text>
+        <!-- Matter info card -->
+        <rect x="30" y="102" width="160" height="44" rx="8" fill="#1a5276" opacity="0.3"/>
+        <text x="50" y="120" fill="#4a9eda" font-family="-apple-system,sans-serif" font-size="9" font-weight="600">Matter Enabled</text>
+        <text x="50" y="134" fill="#7a9aaa" font-family="sans-serif" font-size="7.5">Devices can pair with other platforms</text>
+        <!-- Toggle -->
+        <rect x="156" y="112" width="26" height="14" rx="7" fill="#4a9eda"/>
+        <circle cx="175" cy="119" r="5" fill="#fff"/>
+        <!-- Device list header -->
+        <text x="36" y="168" fill="#7a9aaa" font-family="-apple-system,sans-serif" font-size="8" font-weight="600" letter-spacing="1">DEVICES</text>
+        <!-- Device 1 -->
+        <rect x="30" y="176" width="160" height="48" rx="8" fill="#1a2733"/>
+        <rect x="42" y="188" width="24" height="24" rx="6" fill="#1a5276"/>
+        <circle cx="54" cy="200" r="5" fill="#4a9eda" opacity="0.6"/>
+        <line x1="54" y1="195" x2="54" y2="200" stroke="#4a9eda" stroke-width="1.5" stroke-linecap="round"/>
+        <text x="74" y="197" fill="#fff" font-family="-apple-system,sans-serif" font-size="9.5" font-weight="500">Kitchen Light</text>
+        <text x="74" y="209" fill="#7a9aaa" font-family="sans-serif" font-size="7.5">KS220 | Matter paired</text>
+        <circle cx="178" cy="200" r="4" fill="#2a5a3a"/><path d="M175 200l2 2 4-4" stroke="#6adf8a" stroke-width="1" fill="none"/>
+        <!-- Device 2 -->
+        <rect x="30" y="232" width="160" height="48" rx="8" fill="#1a2733"/>
+        <rect x="42" y="244" width="24" height="24" rx="6" fill="#1a5276"/>
+        <circle cx="54" cy="256" r="5" fill="#4a9eda" opacity="0.6"/>
+        <line x1="54" y1="251" x2="54" y2="256" stroke="#4a9eda" stroke-width="1.5" stroke-linecap="round"/>
+        <text x="74" y="253" fill="#fff" font-family="-apple-system,sans-serif" font-size="9.5" font-weight="500">Living Room</text>
+        <text x="74" y="265" fill="#7a9aaa" font-family="sans-serif" font-size="7.5">KS220 | Matter paired</text>
+        <circle cx="178" cy="256" r="4" fill="#2a5a3a"/><path d="M175 256l2 2 4-4" stroke="#6adf8a" stroke-width="1" fill="none"/>
+        <!-- Device 3 -->
+        <rect x="30" y="288" width="160" height="48" rx="8" fill="#1a2733"/>
+        <rect x="42" y="300" width="24" height="24" rx="6" fill="#1a5276"/>
+        <circle cx="54" cy="312" r="5" fill="#daa520" opacity="0.6"/>
+        <line x1="54" y1="307" x2="54" y2="312" stroke="#daa520" stroke-width="1.5" stroke-linecap="round"/>
+        <text x="74" y="309" fill="#fff" font-family="-apple-system,sans-serif" font-size="9.5" font-weight="500">Porch Light</text>
+        <text x="74" y="321" fill="#daa520" font-family="sans-serif" font-size="7.5">KS220 | Pairing needed</text>
+        <circle cx="178" cy="312" r="4" fill="#3a2a1a"/><text x="178" y="315" text-anchor="middle" fill="#daa520" font-family="sans-serif" font-size="6">!</text>
+        <!-- Pair button -->
+        <rect x="50" y="350" width="120" height="36" rx="18" fill="#4a9eda"/>
+        <text x="110" y="373" text-anchor="middle" fill="#fff" font-family="-apple-system,sans-serif" font-size="11" font-weight="600">Pair via Matter</text>
+        <!-- Bottom nav -->
+        <rect x="20" y="384" width="180" height="20" rx="0" fill="#1a2733"/>
+        <line x1="20" y1="384" x2="200" y2="384" stroke="#2a3a4a" stroke-width="0.5"/>
+        <rect x="90" y="398" width="40" height="4" rx="2" fill="#5a7a8a"/>
+        <text x="110" y="415" text-anchor="middle" fill="#5a7a8a" font-family="-apple-system,sans-serif" font-size="9">Matter device pairing screen</text>
+      </svg>
+
+      <!-- UniFi App - Admin/Settings -->
+      <svg viewBox="0 0 220 420" fill="none">
+        <text x="110" y="16" text-anchor="middle" fill="#7eb8da" font-family="-apple-system,sans-serif" font-size="11" font-weight="600">UniFi App</text>
+        <!-- Phone frame -->
+        <rect x="20" y="24" width="180" height="380" rx="20" fill="#0f1923" stroke="#3a4a5a" stroke-width="2"/>
+        <!-- Status bar -->
+        <rect x="20" y="24" width="180" height="30" rx="20" fill="#0f1923"/>
+        <rect x="20" y="44" width="180" height="10" fill="#0f1923"/>
+        <text x="50" y="43" fill="#7a9aaa" font-family="sans-serif" font-size="8">9:41</text>
+        <rect x="150" y="36" width="16" height="8" rx="2" fill="#7a9aaa" opacity="0.5"/>
+        <rect x="151" y="37" width="12" height="6" rx="1" fill="#7a9aaa" opacity="0.7"/>
+        <rect x="80" y="26" width="60" height="6" rx="3" fill="#1a2733"/>
+        <!-- Header -->
+        <rect x="30" y="58" width="160" height="36" rx="0" fill="#1a2733"/>
+        <text x="110" y="81" text-anchor="middle" fill="#fff" font-family="-apple-system,sans-serif" font-size="11" font-weight="600">Settings</text>
+        <!-- Settings gear icon -->
+        <circle cx="44" cy="76" r="6" stroke="#4a9eda" stroke-width="1" fill="none"/>
+        <circle cx="44" cy="76" r="2" fill="#4a9eda"/>
+        <!-- Settings items -->
+        <!-- General -->
+        <rect x="30" y="102" width="160" height="42" rx="8" fill="#1a2733"/>
+        <text x="52" y="120" fill="#fff" font-family="-apple-system,sans-serif" font-size="10" font-weight="500">General</text>
+        <text x="52" y="134" fill="#7a9aaa" font-family="sans-serif" font-size="7.5">Site name, country, timezone</text>
+        <text x="180" y="120" text-anchor="end" fill="#5a7a8a" font-family="sans-serif" font-size="10">&gt;</text>
+        <!-- WiFi -->
+        <rect x="30" y="150" width="160" height="42" rx="8" fill="#1a2733"/>
+        <text x="52" y="168" fill="#fff" font-family="-apple-system,sans-serif" font-size="10" font-weight="500">WiFi</text>
+        <text x="52" y="182" fill="#7a9aaa" font-family="sans-serif" font-size="7.5">Networks, passwords, bands</text>
+        <text x="180" y="168" text-anchor="end" fill="#5a7a8a" font-family="sans-serif" font-size="10">&gt;</text>
+        <!-- Admins & Users -->
+        <rect x="30" y="198" width="160" height="42" rx="8" fill="#1a5276" opacity="0.3" stroke="#4a9eda" stroke-width="1"/>
+        <text x="52" y="216" fill="#4a9eda" font-family="-apple-system,sans-serif" font-size="10" font-weight="600">Admins &amp; Users</text>
+        <text x="52" y="230" fill="#7a9aaa" font-family="sans-serif" font-size="7.5">Manage access, add admins</text>
+        <text x="180" y="216" text-anchor="end" fill="#4a9eda" font-family="sans-serif" font-size="10">&gt;</text>
+        <!-- System -->
+        <rect x="30" y="246" width="160" height="42" rx="8" fill="#1a2733"/>
+        <text x="52" y="264" fill="#fff" font-family="-apple-system,sans-serif" font-size="10" font-weight="500">System</text>
+        <text x="52" y="278" fill="#7a9aaa" font-family="sans-serif" font-size="7.5">Updates, backups, firmware</text>
+        <text x="180" y="264" text-anchor="end" fill="#5a7a8a" font-family="sans-serif" font-size="10">&gt;</text>
+        <!-- Control Plane -->
+        <rect x="30" y="294" width="160" height="42" rx="8" fill="#1a2733"/>
+        <text x="52" y="312" fill="#fff" font-family="-apple-system,sans-serif" font-size="10" font-weight="500">Control Plane</text>
+        <text x="52" y="326" fill="#7a9aaa" font-family="sans-serif" font-size="7.5">Transfer ownership, cloud</text>
+        <text x="180" y="312" text-anchor="end" fill="#5a7a8a" font-family="sans-serif" font-size="10">&gt;</text>
+        <!-- Protect -->
+        <rect x="30" y="342" width="160" height="34" rx="8" fill="#1a2733"/>
+        <text x="52" y="363" fill="#fff" font-family="-apple-system,sans-serif" font-size="10" font-weight="500">Protect</text>
+        <text x="180" y="363" text-anchor="end" fill="#5a7a8a" font-family="sans-serif" font-size="10">&gt;</text>
+        <!-- Bottom nav -->
+        <rect x="20" y="384" width="180" height="20" rx="0" fill="#1a2733"/>
+        <line x1="20" y1="384" x2="200" y2="384" stroke="#2a3a4a" stroke-width="0.5"/>
+        <rect x="90" y="398" width="40" height="4" rx="2" fill="#5a7a8a"/>
+        <text x="110" y="415" text-anchor="middle" fill="#5a7a8a" font-family="-apple-system,sans-serif" font-size="9">Admin settings screen</text>
+      </svg>
+    </div>
+
+    <!-- Aqara U100 Emergency Key Diagram -->
+    <div class="device-illustrations">
+      <svg viewBox="0 0 400 260" fill="none">
+        <text x="200" y="20" text-anchor="middle" fill="#7eb8da" font-family="-apple-system,sans-serif" font-size="13" font-weight="600">Aqara U100 &#8212; Emergency Key Access</text>
+
+        <!-- Lock exterior panel (front view, bottom portion) -->
+        <rect x="120" y="40" width="160" height="180" rx="12" fill="#222" stroke="#444" stroke-width="1.5"/>
+        <text x="200" y="62" text-anchor="middle" fill="#555" font-family="-apple-system,sans-serif" font-size="9" letter-spacing="2">AQARA</text>
+
+        <!-- Keypad area suggestion at top -->
+        <rect x="148" y="70" width="104" height="40" rx="6" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+        <text x="200" y="94" text-anchor="middle" fill="#444" font-family="sans-serif" font-size="8">Keypad area</text>
+
+        <!-- Fingerprint sensor -->
+        <circle cx="200" cy="130" r="10" fill="#1e1e1e" stroke="#444" stroke-width="0.8"/>
+        <text x="200" y="133" text-anchor="middle" fill="#444" font-family="sans-serif" font-size="6">FP</text>
+
+        <!-- Bottom removable cover -->
+        <rect x="170" y="170" width="60" height="30" rx="4" fill="#2a2a2a" stroke="#4a9eda" stroke-width="1.5" stroke-dasharray="4 2"/>
+        <text x="200" y="189" text-anchor="middle" fill="#4a9eda" font-family="sans-serif" font-size="7">COVER</text>
+
+        <!-- Arrow showing cover removal -->
+        <path d="M200 205 L200 230" stroke="#4a9eda" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M195 225 L200 232 L205 225" stroke="#4a9eda" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <!-- Label: Removable Cover -->
+        <line x1="232" y1="185" x2="290" y2="185" stroke="#4a9eda" stroke-width="0.8" stroke-dasharray="2 2"/>
+        <text x="295" y="182" fill="#4a9eda" font-family="-apple-system,sans-serif" font-size="9" font-weight="500">Removable cover</text>
+        <text x="295" y="194" fill="#7a9aaa" font-family="sans-serif" font-size="7.5">Pull down to remove</text>
+
+        <!-- Exposed keyhole (shown below as if cover removed) -->
+        <rect x="170" y="238" width="60" height="20" rx="3" fill="#111" stroke="#3a4a5a" stroke-width="1"/>
+        <!-- Keyhole shape -->
+        <circle cx="200" cy="246" r="4" fill="#0f1923" stroke="#5a7a8a" stroke-width="0.8"/>
+        <rect x="198" y="246" width="4" height="6" rx="0.5" fill="#0f1923" stroke="#5a7a8a" stroke-width="0.5"/>
+
+        <!-- Label: Keyhole -->
+        <line x1="232" y1="248" x2="290" y2="248" stroke="#daa520" stroke-width="0.8" stroke-dasharray="2 2"/>
+        <text x="295" y="245" fill="#daa520" font-family="-apple-system,sans-serif" font-size="9" font-weight="500">Emergency keyhole</text>
+        <text x="295" y="257" fill="#7a9aaa" font-family="sans-serif" font-size="7.5">Insert physical key here</text>
+
+        <!-- Label: Bottom of exterior -->
+        <line x1="168" y1="248" x2="110" y2="248" stroke="#7a9aaa" stroke-width="0.8" stroke-dasharray="2 2"/>
+        <text x="30" y="245" fill="#7a9aaa" font-family="-apple-system,sans-serif" font-size="9">Bottom of</text>
+        <text x="30" y="257" fill="#7a9aaa" font-family="-apple-system,sans-serif" font-size="9">exterior panel</text>
       </svg>
     </div>
 
@@ -177,10 +350,10 @@
       <p><strong>Home Assistant</strong> is the central hub running on your network. It connects to everything:</p>
       <ul class="device-list">
         <li><svg viewBox="0 0 22 22" fill="none"><rect x="3" y="4" width="16" height="12" rx="2" stroke="#4a9eda" stroke-width="1.5"/><line x1="8" y1="16" x2="8" y2="19" stroke="#4a9eda" stroke-width="1.5"/><line x1="14" y1="16" x2="14" y2="19" stroke="#4a9eda" stroke-width="1.5"/><line x1="6" y1="19" x2="16" y2="19" stroke="#4a9eda" stroke-width="1.5"/></svg><span class="dl-name">Home Assistant</span><span class="dl-desc">Central controller</span></li>
-        <li><svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="3" fill="#4a9eda"/><path d="M11 4a7 7 0 010 14" stroke="#4a9eda" stroke-width="1.5" fill="none"/><path d="M11 7a4 4 0 010 8" stroke="#4a9eda" stroke-width="1.5" fill="none"/></svg><span class="dl-name">UniFi Network + Protect</span><span class="dl-desc">Direct integration</span></li>
-        <li><svg viewBox="0 0 22 22" fill="none"><rect x="5" y="2" width="12" height="18" rx="3" stroke="#4a9eda" stroke-width="1.5"/><circle cx="11" cy="9" r="2.5" stroke="#4a9eda" stroke-width="1.2"/><line x1="11" y1="14" x2="11" y2="17" stroke="#4a9eda" stroke-width="1.5" stroke-linecap="round"/></svg><span class="dl-name">Kasa Switches</span><span class="dl-desc">Connected via Matter</span></li>
-        <li><svg viewBox="0 0 22 22" fill="none"><rect x="4" y="4" width="14" height="14" rx="3" stroke="#4a9eda" stroke-width="1.5"/><circle cx="11" cy="11" r="3" stroke="#4a9eda" stroke-width="1.2"/><circle cx="11" cy="11" r="1" fill="#4a9eda"/></svg><span class="dl-name">Aqara Hub</span><span class="dl-desc">Bridge for Aqara lock &rarr; Matter &rarr; HA</span></li>
-        <li><svg viewBox="0 0 22 22" fill="none"><rect x="5" y="9" width="12" height="9" rx="2" stroke="#4a9eda" stroke-width="1.5"/><path d="M8 9V7a3 3 0 016 0v2" stroke="#4a9eda" stroke-width="1.5" fill="none"/><circle cx="11" cy="14" r="1.2" fill="#4a9eda"/></svg><span class="dl-name">Aqara Lock</span><span class="dl-desc">Connected via Aqara Hub + Matter</span></li>
+        <li><svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="3" fill="#4a9eda"/><path d="M11 4a7 7 0 010 14" stroke="#4a9eda" stroke-width="1.5" fill="none"/><path d="M11 7a4 4 0 010 8" stroke="#4a9eda" stroke-width="1.5" fill="none"/></svg><span class="dl-name">UniFi (UCG-MAX Gateway)</span><span class="dl-desc">Network + Protect</span></li>
+        <li><svg viewBox="0 0 22 22" fill="none"><rect x="5" y="2" width="12" height="18" rx="3" stroke="#4a9eda" stroke-width="1.5"/><circle cx="11" cy="9" r="2.5" stroke="#4a9eda" stroke-width="1.2"/><line x1="11" y1="14" x2="11" y2="17" stroke="#4a9eda" stroke-width="1.5" stroke-linecap="round"/></svg><span class="dl-name">Kasa KS220 Switches</span><span class="dl-desc">Matter via 2.4GHz Wi-Fi</span></li>
+        <li><svg viewBox="0 0 22 22" fill="none"><rect x="4" y="4" width="14" height="14" rx="3" stroke="#4a9eda" stroke-width="1.5"/><circle cx="11" cy="11" r="3" stroke="#4a9eda" stroke-width="1.2"/><circle cx="11" cy="11" r="1" fill="#4a9eda"/></svg><span class="dl-name">Aqara Hub M3</span><span class="dl-desc">Zigbee/Thread/Matter/BT/IR/PoE</span></li>
+        <li><svg viewBox="0 0 22 22" fill="none"><rect x="5" y="9" width="12" height="9" rx="2" stroke="#4a9eda" stroke-width="1.5"/><path d="M8 9V7a3 3 0 016 0v2" stroke="#4a9eda" stroke-width="1.5" fill="none"/><circle cx="11" cy="14" r="1.2" fill="#4a9eda"/></svg><span class="dl-name">Aqara U100 Lock</span><span class="dl-desc">Zigbee &rarr; Hub M3 &rarr; Matter &rarr; HA</span></li>
       </ul>
     </div>
     <div class="tip"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#6adf8a" stroke-width="1.5"/><line x1="10" y1="5" x2="10" y2="12" stroke="#6adf8a" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="15" r="1" fill="#6adf8a"/></svg><div><span class="tip-label">Tip: </span>Home Assistant is the only app you need for day-to-day control. The Aqara app and UniFi app are only needed for specific admin tasks described below.</div></div>
@@ -205,7 +378,25 @@
       <div class="step"><span class="step-number">2</span><span class="step-title">Log in with your Ubiquiti account</span><div class="step-detail">Use the email and password for your UI.com account. If you don't have one, you'll need the current owner to add you first (see Transfer Ownership below).</div></div>
       <div class="step"><span class="step-number">3</span><span class="step-title">Select your site</span><div class="step-detail">Tap on your home's site name to see connected devices, Wi-Fi settings, and camera feeds.</div></div>
     </div>
-    <div class="tip"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#6adf8a" stroke-width="1.5"/><line x1="10" y1="5" x2="10" y2="12" stroke="#6adf8a" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="15" r="1" fill="#6adf8a"/></svg><div><span class="tip-label">Tip: </span>You can also access UniFi from a web browser by going to <strong>unifi.ui.com</strong> and logging in.</div></div>
+    <div class="tip"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#6adf8a" stroke-width="1.5"/><line x1="10" y1="5" x2="10" y2="12" stroke="#6adf8a" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="15" r="1" fill="#6adf8a"/></svg><div><span class="tip-label">Tip: </span>You can also access UniFi from a web browser by going to <strong>unifi.ui.com</strong> and logging in. Your network runs on the <strong>Ubiquiti UCG-MAX Cloud Gateway Max</strong>.</div></div>
+
+    <div class="subsection">
+      <h3>Changing Wi-Fi Name or Password</h3>
+      <div class="step"><span class="step-number">1</span><span class="step-title">Open UniFi Settings</span><div class="step-detail">In the UniFi app or at <strong>unifi.ui.com</strong>, go to <strong>Settings &rarr; WiFi</strong>.</div></div>
+      <div class="step"><span class="step-number">2</span><span class="step-title">Select the network to change</span><div class="step-detail">You'll see a list of Wi-Fi networks. Tap the one you want to edit (your main home network).</div></div>
+      <div class="step"><span class="step-number">3</span><span class="step-title">Edit name or password</span><div class="step-detail">Change the <strong>Network Name (SSID)</strong> and/or <strong>Password</strong>. Tap <strong>Save</strong>.</div></div>
+      <div class="step"><span class="step-number">4</span><span class="step-title">Reconnect your devices</span><div class="step-detail">All devices will disconnect and need to reconnect using the new name/password. This includes phones, laptops, tablets, and smart devices.</div></div>
+    </div>
+    <div class="warning"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2L1 18h18L10 2z" stroke="#daa520" stroke-width="1.5" fill="none"/><line x1="10" y1="8" x2="10" y2="13" stroke="#daa520" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="16" r="1" fill="#daa520"/></svg><div><span class="warning-label">Do NOT change the "Smart" network. </span>There is a dedicated Wi-Fi network for smart devices (switches, hubs, etc.). This network is pre-configured and changing its name or password will disconnect all smart home devices and require re-pairing each one individually. Only change the main home Wi-Fi network.</div></div>
+
+    <div class="helpful-links">
+      <h4>Helpful Links</h4>
+      <a href="https://unifi.ui.com" target="_blank" rel="noopener">UniFi Web Portal (unifi.ui.com)</a>
+      <a href="https://apps.apple.com/app/unifi/id1057750338" target="_blank" rel="noopener">UniFi App &#8212; App Store (iOS)</a>
+      <a href="https://play.google.com/store/apps/details?id=com.ubnt.easyunifi" target="_blank" rel="noopener">UniFi App &#8212; Google Play (Android)</a>
+      <a href="https://help.ui.com" target="_blank" rel="noopener">Ubiquiti Help Center (help.ui.com)</a>
+      <a href="https://store.ui.com/us/en/collections/cloud-gateway-max" target="_blank" rel="noopener">UCG-MAX Cloud Gateway Max Product Page</a>
+    </div>
   </div>
 </div>
 
@@ -227,6 +418,12 @@
     </div>
     <div class="warning"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2L1 18h18L10 2z" stroke="#daa520" stroke-width="1.5" fill="none"/><line x1="10" y1="8" x2="10" y2="13" stroke="#daa520" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="16" r="1" fill="#daa520"/></svg><div><span class="warning-label">Important: </span>Make sure you create a backup of your UniFi settings before transferring. Go to <strong>Settings &rarr; System &rarr; Backups</strong> and download a backup file.</div></div>
     <div class="tip"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#6adf8a" stroke-width="1.5"/><line x1="10" y1="5" x2="10" y2="12" stroke="#6adf8a" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="15" r="1" fill="#6adf8a"/></svg><div><span class="tip-label">Tip: </span>If you just want to give someone access without transferring full ownership, simply add them as an Admin (steps 1-3) and skip the transfer step.</div></div>
+    <div class="helpful-links">
+      <h4>Helpful Links</h4>
+      <a href="https://unifi.ui.com" target="_blank" rel="noopener">UniFi Web Portal (unifi.ui.com)</a>
+      <a href="https://help.ui.com" target="_blank" rel="noopener">Ubiquiti Help Center (help.ui.com)</a>
+      <a href="https://ui.com/account" target="_blank" rel="noopener">Create / Manage Ubiquiti Account (ui.com)</a>
+    </div>
   </div>
 </div>
 
@@ -242,6 +439,13 @@
       <div class="step"><span class="step-number">2</span><span class="step-title">UniFi Protect app</span><div class="step-detail">Open the UniFi app and switch to the "Protect" section. This gives you access to camera settings, motion zones, and full recording playback.</div></div>
     </div>
     <div class="tip"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#6adf8a" stroke-width="1.5"/><line x1="10" y1="5" x2="10" y2="12" stroke="#6adf8a" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="15" r="1" fill="#6adf8a"/></svg><div><span class="tip-label">Tip: </span>Home Assistant shows you camera feeds alongside everything else (locks, lights, etc.). Use the UniFi Protect app only when you need to change camera settings like motion sensitivity or recording schedules.</div></div>
+    <div class="helpful-links">
+      <h4>Helpful Links</h4>
+      <a href="https://unifi.ui.com" target="_blank" rel="noopener">UniFi Web Portal (unifi.ui.com)</a>
+      <a href="https://apps.apple.com/app/unifi/id1057750338" target="_blank" rel="noopener">UniFi App &#8212; App Store (iOS)</a>
+      <a href="https://play.google.com/store/apps/details?id=com.ubnt.easyunifi" target="_blank" rel="noopener">UniFi App &#8212; Google Play (Android)</a>
+      <a href="https://help.ui.com/hc/en-us/categories/360002564914-UniFi-Protect" target="_blank" rel="noopener">UniFi Protect Support</a>
+    </div>
   </div>
 </div>
 
@@ -252,14 +456,21 @@
     <span class="arrow">&#9660;</span>
   </div>
   <div class="section-body">
-    <div class="subsection"><h3>How the Lock Works</h3><p>Your Aqara smart lock connects through a chain: <strong>Lock &rarr; Aqara Hub (Zigbee) &rarr; Matter &rarr; Home Assistant</strong>. This means you can lock/unlock from Home Assistant, but PIN code management must be done through the <strong>Aqara Home app</strong>.</p></div>
+    <div class="subsection"><h3>How the Lock Works</h3><p>Your <strong>Aqara U100 Smart Lock</strong> connects through the <strong>Aqara Smart Home Hub M3</strong> &#8212; a powerful hub that supports Zigbee, Bluetooth, Wi-Fi, Thread, PoE, and IR. The Hub M3 acts as a Matter controller and Thread border router, bridging the lock to Home Assistant.</p>
+    <p>Connection chain: <strong>Lock (Zigbee) &rarr; Aqara Hub M3 &rarr; Matter &rarr; Home Assistant</strong>. You can lock/unlock from Home Assistant, but PIN code management must be done through the <strong>Aqara Home app</strong>.</p></div>
     <div class="subsection"><h3>Unlocking the Door</h3><p>You have several ways to unlock:</p>
       <ul class="device-list">
         <li><svg viewBox="0 0 22 22" fill="none"><rect x="4" y="4" width="14" height="14" rx="2" stroke="#4a9eda" stroke-width="1.5"/><text x="11" y="15" text-anchor="middle" fill="#4a9eda" font-size="10" font-weight="600" font-family="sans-serif">123</text></svg><span class="dl-name">PIN Code</span><span class="dl-desc">Enter your code on the keypad</span></li>
         <li><svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="10" r="6" stroke="#4a9eda" stroke-width="1.5"/><path d="M8 7Q11 5 14 7" fill="none" stroke="#4a9eda" stroke-width="0.8"/><path d="M7 10Q11 7 15 10" fill="none" stroke="#4a9eda" stroke-width="0.8"/><path d="M8 13Q11 10 14 13" fill="none" stroke="#4a9eda" stroke-width="0.8"/></svg><span class="dl-name">Fingerprint</span><span class="dl-desc">If enrolled in the Aqara app</span></li>
         <li><svg viewBox="0 0 22 22" fill="none"><rect x="5" y="3" width="12" height="16" rx="2" stroke="#4a9eda" stroke-width="1.5"/><circle cx="11" cy="17" r="1" fill="#4a9eda"/><rect x="8" y="6" width="6" height="8" rx="1" fill="#4a9eda" opacity="0.2"/></svg><span class="dl-name">Home Assistant</span><span class="dl-desc">Tap lock/unlock in the app</span></li>
-        <li><svg viewBox="0 0 22 22" fill="none"><circle cx="8" cy="7" r="4" stroke="#4a9eda" stroke-width="1.5"/><line x1="11" y1="10" x2="18" y2="17" stroke="#4a9eda" stroke-width="1.5"/><line x1="15" y1="14" x2="18" y2="17" stroke="#4a9eda" stroke-width="2.5" stroke-linecap="round"/></svg><span class="dl-name">Physical Key</span><span class="dl-desc">Emergency backup</span></li>
+        <li><svg viewBox="0 0 22 22" fill="none"><circle cx="8" cy="7" r="4" stroke="#4a9eda" stroke-width="1.5"/><line x1="11" y1="10" x2="18" y2="17" stroke="#4a9eda" stroke-width="1.5"/><line x1="15" y1="14" x2="18" y2="17" stroke="#4a9eda" stroke-width="2.5" stroke-linecap="round"/></svg><span class="dl-name">Physical Key</span><span class="dl-desc">Emergency backup (see diagram above)</span></li>
       </ul>
+    </div>
+    <div class="helpful-links">
+      <h4>Helpful Links</h4>
+      <a href="https://apps.apple.com/app/aqara-home/id1115101477" target="_blank" rel="noopener">Aqara Home App &#8212; App Store (iOS)</a>
+      <a href="https://play.google.com/store/apps/details?id=com.lumiunited.aqarahome" target="_blank" rel="noopener">Aqara Home App &#8212; Google Play (Android)</a>
+      <a href="https://www.aqara.com/en/support" target="_blank" rel="noopener">Aqara Support (aqara.com)</a>
     </div>
   </div>
 </div>
@@ -292,6 +503,13 @@
     </div>
     <div class="tip"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#6adf8a" stroke-width="1.5"/><line x1="10" y1="5" x2="10" y2="12" stroke="#6adf8a" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="15" r="1" fill="#6adf8a"/></svg><div><span class="tip-label">Tip: </span>You can add fingerprints the same way &#8212; go to User Management and choose "Add Fingerprint" instead of "Add Password." Follow the on-screen prompts to scan.</div></div>
     <div class="warning"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2L1 18h18L10 2z" stroke="#daa520" stroke-width="1.5" fill="none"/><line x1="10" y1="8" x2="10" y2="13" stroke="#daa520" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="16" r="1" fill="#daa520"/></svg><div><span class="warning-label">Important: </span>Always keep at least one admin PIN code active. If you delete all codes, you'll need the physical key to get in and will have to re-add codes via the Aqara app.</div></div>
+    <div class="helpful-links">
+      <h4>Helpful Links</h4>
+      <a href="https://apps.apple.com/app/aqara-home/id1115101477" target="_blank" rel="noopener">Aqara Home App &#8212; App Store (iOS)</a>
+      <a href="https://play.google.com/store/apps/details?id=com.lumiunited.aqarahome" target="_blank" rel="noopener">Aqara Home App &#8212; Google Play (Android)</a>
+      <a href="https://www.aqara.com/en/support" target="_blank" rel="noopener">Aqara Support (aqara.com)</a>
+      <a href="https://www.aqara.com/en/product/smart-lock-u100" target="_blank" rel="noopener">Aqara U100 Product Page</a>
+    </div>
   </div>
 </div>
 
@@ -302,7 +520,7 @@
     <span class="arrow">&#9660;</span>
   </div>
   <div class="section-body">
-    <div class="subsection"><h3>How Kasa Switches Work</h3><p>Your Kasa smart light switches connect to Home Assistant through the <strong>Matter protocol</strong>. Home Assistant acts as the Matter controller, so you control the switches entirely from Home Assistant &#8212; no Kasa app needed for daily use.</p></div>
+    <div class="subsection"><h3>How Kasa Switches Work</h3><p>Your <strong>Kasa Matter Smart Light Switches (KS220)</strong> are single-pole switches that require a neutral wire and connect via 2.4GHz Wi-Fi. They support voice control through Siri, Alexa, and Google Assistant. They connect to Home Assistant through the <strong>Matter protocol</strong>, so you control the switches entirely from Home Assistant &#8212; no Kasa app needed for daily use.</p></div>
     <div class="subsection"><h3>Controlling Lights</h3>
       <div class="step"><span class="step-number">1</span><span class="step-title">Physical switch</span><div class="step-detail">Just press the switch on the wall like a normal light switch. It still works manually.</div></div>
       <div class="step"><span class="step-number">2</span><span class="step-title">Home Assistant app</span><div class="step-detail">Open the Home Assistant app on your phone. Find the light in your dashboard and tap to toggle on/off. If the switch is a dimmer, you can slide to adjust brightness.</div></div>
@@ -314,6 +532,13 @@
       <div class="step"><span class="step-number">3</span><span class="step-title">Add to Home Assistant via Matter</span><div class="step-detail">In Home Assistant, go to <strong>Settings &rarr; Devices &amp; Services &rarr; Add Integration &rarr; Matter</strong>. Enter the Matter pairing code from the Kasa app. The switch will appear in your dashboard.</div></div>
     </div>
     <div class="tip"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#6adf8a" stroke-width="1.5"/><line x1="10" y1="5" x2="10" y2="12" stroke="#6adf8a" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="15" r="1" fill="#6adf8a"/></svg><div><span class="tip-label">Tip: </span>Once added to Home Assistant via Matter, you can control the switch even without internet &#8212; Matter works locally on your network.</div></div>
+    <div class="helpful-links">
+      <h4>Helpful Links</h4>
+      <a href="https://apps.apple.com/app/kasa-smart/id1034035493" target="_blank" rel="noopener">Kasa Smart App &#8212; App Store (iOS)</a>
+      <a href="https://play.google.com/store/apps/details?id=com.tplink.kasa_android" target="_blank" rel="noopener">Kasa Smart App &#8212; Google Play (Android)</a>
+      <a href="https://www.tp-link.com/us/support/" target="_blank" rel="noopener">TP-Link Support (tp-link.com)</a>
+      <a href="https://www.tp-link.com/us/smart-home/" target="_blank" rel="noopener">TP-Link Smart Home Products</a>
+    </div>
   </div>
 </div>
 
@@ -339,6 +564,49 @@
       </ul>
     </div>
     <div class="tip"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#6adf8a" stroke-width="1.5"/><line x1="10" y1="5" x2="10" y2="12" stroke="#6adf8a" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="15" r="1" fill="#6adf8a"/></svg><div><span class="tip-label">Tip: </span>Home Assistant handles everything day-to-day. You only need the UniFi app for network admin tasks and the Aqara app for managing lock PIN codes.</div></div>
+    <div class="helpful-links">
+      <h4>Helpful Links</h4>
+      <a href="https://www.home-assistant.io" target="_blank" rel="noopener">Home Assistant Official Site (home-assistant.io)</a>
+      <a href="https://apps.apple.com/app/home-assistant/id1099568401" target="_blank" rel="noopener">Home Assistant Companion &#8212; App Store (iOS)</a>
+      <a href="https://play.google.com/store/apps/details?id=io.homeassistant.companion.android" target="_blank" rel="noopener">Home Assistant Companion &#8212; Google Play (Android)</a>
+      <a href="https://www.home-assistant.io/docs/" target="_blank" rel="noopener">Home Assistant Documentation</a>
+      <a href="https://community.home-assistant.io" target="_blank" rel="noopener">Home Assistant Community Forum</a>
+    </div>
+  </div>
+</div>
+
+<!-- IPAD WALL PANEL -->
+<div class="section" data-category="ipad">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><svg class="icon" viewBox="0 0 24 24" fill="none"><rect x="4" y="2" width="16" height="20" rx="2" stroke="#4a9eda" stroke-width="2"/><circle cx="12" cy="19" r="1" fill="#4a9eda"/><rect x="7" y="5" width="10" height="12" rx="1" fill="#4a9eda" opacity="0.15"/></svg> iPad Wall Panel &#8212; Setup After Reset</h2>
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <p>If the wall-mounted iPad has been reset (or you're setting it up for a new owner), follow these steps to restore smart home control.</p>
+    <div class="subsection"><h3>Initial iPad Setup</h3>
+      <div class="step"><span class="step-number">1</span><span class="step-title">Complete iOS setup</span><div class="step-detail">Follow the on-screen prompts to set up the iPad (language, Wi-Fi, Apple ID). Connect to the main home Wi-Fi network.</div></div>
+      <div class="step"><span class="step-number">2</span><span class="step-title">Download required apps</span><div class="step-detail">Open the App Store and install these three apps:<br>&#8226; <strong>Home Assistant</strong> &#8212; main smart home control<br>&#8226; <strong>Aqara Home</strong> &#8212; lock PIN code management<br>&#8226; <strong>UniFi</strong> &#8212; network and camera access</div></div>
+    </div>
+    <div class="subsection"><h3>App Login Credentials</h3>
+      <p>Each app requires its own account. Ask the previous owner or property manager to provide these credentials, or transfer ownership to your own accounts:</p>
+      <ul class="device-list">
+        <li><svg viewBox="0 0 22 22" fill="none"><path d="M11 2L3 8v10a2 2 0 002 2h12a2 2 0 002-2V8L11 2z" stroke="#4a9eda" stroke-width="1.5"/><rect x="8" y="12" width="6" height="8" rx="1" fill="#4a9eda" opacity="0.3"/></svg><span class="dl-name">Home Assistant</span><span class="dl-desc">URL + username + password</span></li>
+        <li><svg viewBox="0 0 22 22" fill="none"><rect x="5" y="9" width="12" height="9" rx="2" stroke="#4a9eda" stroke-width="1.5"/><path d="M8 9V7a3 3 0 016 0v2" stroke="#4a9eda" stroke-width="1.5" fill="none"/><circle cx="11" cy="14" r="1.2" fill="#4a9eda"/></svg><span class="dl-name">Aqara Home</span><span class="dl-desc">Aqara account email + password</span></li>
+        <li><svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="3" fill="#4a9eda"/><path d="M11 4a7 7 0 010 14" stroke="#4a9eda" stroke-width="1.5" fill="none"/></svg><span class="dl-name">UniFi</span><span class="dl-desc">Ubiquiti (UI.com) account email + password</span></li>
+      </ul>
+    </div>
+    <div class="subsection"><h3>Configure Home Assistant</h3>
+      <div class="step"><span class="step-number">1</span><span class="step-title">Open Home Assistant app</span><div class="step-detail">Enter the Home Assistant URL (ask the owner for this &#8212; it's usually something like <strong>http://homeassistant.local:8123</strong>).</div></div>
+      <div class="step"><span class="step-number">2</span><span class="step-title">Log in</span><div class="step-detail">Enter the username and password provided by the owner. The dashboard should load with all devices visible.</div></div>
+      <div class="step"><span class="step-number">3</span><span class="step-title">Enable Guided Access (optional)</span><div class="step-detail">To lock the iPad to the Home Assistant app (so visitors can't exit), go to iPad <strong>Settings &rarr; Accessibility &rarr; Guided Access</strong> and turn it on. Triple-click the home/side button to activate.</div></div>
+    </div>
+    <div class="warning"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2L1 18h18L10 2z" stroke="#daa520" stroke-width="1.5" fill="none"/><line x1="10" y1="8" x2="10" y2="13" stroke="#daa520" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="16" r="1" fill="#daa520"/></svg><div><span class="warning-label">Important: </span>If you're the new owner, ask the previous owner to transfer their Aqara, UniFi, and Home Assistant accounts to you &#8212; or create new accounts and have the previous owner add you as an admin before they leave. Without proper credentials, you won't be able to manage PIN codes or network settings.</div></div>
+    <div class="helpful-links">
+      <h4>App Download Links</h4>
+      <a href="https://apps.apple.com/app/home-assistant/id1099568401" target="_blank" rel="noopener">Home Assistant &#8212; App Store</a>
+      <a href="https://apps.apple.com/app/aqara-home/id1115101477" target="_blank" rel="noopener">Aqara Home &#8212; App Store</a>
+      <a href="https://apps.apple.com/app/unifi/id1057750338" target="_blank" rel="noopener">UniFi &#8212; App Store</a>
+    </div>
   </div>
 </div>
 
