@@ -89,6 +89,7 @@
   <div class="tab" data-filter="unifi"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="3" fill="#7eb8da"/><path d="M10 3a7 7 0 010 14" stroke="#7eb8da" stroke-width="1.5" fill="none"/><path d="M10 6a4 4 0 010 8" stroke="#7eb8da" stroke-width="1.5" fill="none"/></svg>UniFi</div>
   <div class="tab" data-filter="lock"><svg viewBox="0 0 20 20" fill="none"><rect x="4" y="9" width="12" height="9" rx="2" stroke="#7eb8da" stroke-width="1.5"/><path d="M7 9V6a3 3 0 016 0v3" stroke="#7eb8da" stroke-width="1.5" fill="none"/><circle cx="10" cy="14" r="1.5" fill="#7eb8da"/></svg>Aqara Lock</div>
   <div class="tab" data-filter="switches"><svg viewBox="0 0 20 20" fill="none"><rect x="5" y="2" width="10" height="16" rx="3" stroke="#7eb8da" stroke-width="1.5"/><circle cx="10" cy="8" r="2.5" fill="#7eb8da"/><line x1="10" y1="12" x2="10" y2="15" stroke="#7eb8da" stroke-width="1.5" stroke-linecap="round"/></svg>Kasa Switches</div>
+  <div class="tab" data-filter="thermostat"><svg viewBox="0 0 20 20" fill="none"><rect x="6" y="2" width="8" height="16" rx="4" stroke="#7eb8da" stroke-width="1.5"/><circle cx="10" cy="14" r="2" fill="#7eb8da" opacity="0.4"/><line x1="10" y1="6" x2="10" y2="12" stroke="#7eb8da" stroke-width="1.5" stroke-linecap="round"/></svg>Thermostat</div>
   <div class="tab" data-filter="ha"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2L2 9v8a2 2 0 002 2h12a2 2 0 002-2V9L10 2z" stroke="#7eb8da" stroke-width="1.5"/><rect x="7" y="12" width="6" height="7" rx="1" fill="#7eb8da" opacity="0.4"/></svg>Home Assistant</div>
   <div class="tab" data-filter="ipad"><svg viewBox="0 0 20 20" fill="none"><rect x="4" y="2" width="12" height="16" rx="2" stroke="#7eb8da" stroke-width="1.5"/><circle cx="10" cy="16" r="0.8" fill="#7eb8da"/><rect x="6" y="4" width="8" height="10" rx="1" fill="#7eb8da" opacity="0.15"/></svg>iPad Panel</div>
   <div class="tab" data-filter="troubleshoot"><svg viewBox="0 0 20 20" fill="none"><path d="M12 5a1 1 0 000 1l1.3 1.3a1 1 0 001 0l3-3a5 5 0 01-6.5 6.5l-5.6 5.6a1.7 1.7 0 01-2.4-2.4l5.6-5.6A5 5 0 0112 5z" stroke="#7eb8da" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Troubleshoot</div>
@@ -513,7 +514,7 @@
 </div>
 
 <!-- THERMOSTAT -->
-<div class="section" data-category="ha">
+<div class="section" data-category="thermostat">
   <div class="section-header" onclick="toggleSection(this)">
     <h2><svg class="icon" viewBox="0 0 24 24" fill="none"><rect x="7" y="2" width="10" height="20" rx="5" stroke="#4a9eda" stroke-width="2"/><circle cx="12" cy="16" r="3" fill="#4a9eda" opacity="0.4"/><line x1="12" y1="8" x2="12" y2="14" stroke="#4a9eda" stroke-width="2" stroke-linecap="round"/><line x1="17" y1="8" x2="19" y2="8" stroke="#4a9eda" stroke-width="1.5"/><line x1="17" y1="11" x2="19" y2="11" stroke="#4a9eda" stroke-width="1.5"/></svg> Honeywell T10 Thermostat</h2>
     <span class="arrow">&#9660;</span>
@@ -606,7 +607,7 @@
 </div>
 
 <!-- ALTERNATIVE CONTROL METHODS -->
-<div class="section" data-category="ha">
+<div class="section" data-category="overview">
   <div class="section-header" onclick="toggleSection(this)">
     <h2><svg class="icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#4a9eda" stroke-width="2"/><path d="M8 12h8M12 8v8" stroke="#4a9eda" stroke-width="2" stroke-linecap="round"/></svg> Other Ways to Control Your Smart Home</h2>
     <span class="arrow">&#9660;</span>
@@ -781,14 +782,23 @@ document.getElementById('searchBox').addEventListener('input', (e) => {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelector('.tab[data-filter="all"]').classList.add('active');
   document.querySelectorAll('.section').forEach(s => {
-    if (!query) { s.classList.remove('hidden'); return; }
+    const body = s.querySelector('.section-body');
+    const arrow = s.querySelector('.arrow');
+    if (!query) {
+      s.classList.remove('hidden');
+      if (body) { body.classList.remove('open'); }
+      if (arrow) { arrow.classList.remove('open'); }
+      return;
+    }
     const text = s.textContent.toLowerCase();
     if (text.includes(query)) {
       s.classList.remove('hidden');
-      const body = s.querySelector('.section-body');
-      const arrow = s.querySelector('.arrow');
-      if (!body.classList.contains('open')) { body.classList.add('open'); arrow.classList.add('open'); }
-    } else { s.classList.add('hidden'); }
+      if (body && !body.classList.contains('open')) { body.classList.add('open'); arrow.classList.add('open'); }
+    } else {
+      s.classList.add('hidden');
+      if (body) { body.classList.remove('open'); }
+      if (arrow) { arrow.classList.remove('open'); }
+    }
   });
 });
 </script>
