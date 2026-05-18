@@ -422,28 +422,83 @@
     <span class="arrow">&#9660;</span>
   </div>
   <div class="section-body">
-    <div class="subsection"><h3>What is Home Assistant?</h3><p>Home Assistant is the "brain" of your smart home. It connects to all your devices (UniFi, cameras, locks, switches) and lets you control everything from one place. It also runs automations &#8212; for example, automatically turning on porch lights at sunset or locking the door at bedtime.</p></div>
+    <div class="subsection"><h3>What is Home Assistant?</h3><p>Home Assistant is the "brain" of your smart home. It connects to all your devices (UniFi, cameras, locks, switches, thermostat) and lets you control everything from one place. It also runs automations &#8212; for example, automatically turning on porch lights at sunset or locking the door at bedtime.</p></div>
     <div class="subsection"><h3>How to Access</h3>
       <div class="step"><span class="step-number">1</span><span class="step-title">Phone app (recommended)</span><div class="step-detail">Download "Home Assistant" from the App Store or Google Play. Enter your Home Assistant URL when prompted. Log in with your username and password.</div></div>
       <div class="step"><span class="step-number">2</span><span class="step-title">Web browser</span><div class="step-detail">Open a browser and go to your Home Assistant URL (usually <strong>http://homeassistant.local:8123</strong> on your local network).</div></div>
+      <div class="step"><span class="step-number">3</span><span class="step-title">Wall-mounted iPad</span><div class="step-detail">The iPad on the wall is pre-configured with Home Assistant. Just tap the screen to use it. See the iPad Panel section for setup after a reset.</div></div>
     </div>
     <div class="subsection"><h3>Key Things You Can Do</h3>
       <ul class="device-list">
         <li><svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="6" r="3" stroke="#4a9eda" stroke-width="1.5"/><line x1="11" y1="9" x2="11" y2="14" stroke="#4a9eda" stroke-width="1.5"/><path d="M7 14h8l-1 5H8l-1-5z" stroke="#4a9eda" stroke-width="1.5" fill="none"/></svg><span class="dl-name">Control lights</span><span class="dl-desc">On/off, dimming, schedules</span></li>
         <li><svg viewBox="0 0 22 22" fill="none"><rect x="5" y="9" width="12" height="9" rx="2" stroke="#4a9eda" stroke-width="1.5"/><path d="M8 9V7a3 3 0 016 0v2" stroke="#4a9eda" stroke-width="1.5" fill="none"/><circle cx="11" cy="14" r="1.2" fill="#4a9eda"/></svg><span class="dl-name">Lock/unlock door</span><span class="dl-desc">Remotely via the app</span></li>
-        <li><svg viewBox="0 0 22 22" fill="none"><rect x="3" y="5" width="16" height="10" rx="2" stroke="#4a9eda" stroke-width="1.5"/><circle cx="9" cy="10" r="2.5" stroke="#4a9eda" stroke-width="1.2"/><circle cx="9" cy="10" r="0.8" fill="#4a9eda"/></svg><span class="dl-name">View cameras</span><span class="dl-desc">Live feeds on your dashboard</span></li>
-        <li><svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="3" fill="#4a9eda"/><path d="M11 4a7 7 0 010 14" stroke="#4a9eda" stroke-width="1.5" fill="none"/><path d="M11 7a4 4 0 010 8" stroke="#4a9eda" stroke-width="1.5" fill="none"/></svg><span class="dl-name">See network devices</span><span class="dl-desc">Who's connected to Wi-Fi</span></li>
+        <li><svg viewBox="0 0 22 22" fill="none"><rect x="3" y="5" width="16" height="10" rx="2" stroke="#4a9eda" stroke-width="1.5"/><circle cx="9" cy="10" r="2.5" stroke="#4a9eda" stroke-width="1.2"/><circle cx="9" cy="10" r="0.8" fill="#4a9eda"/></svg><span class="dl-name">View cameras</span><span class="dl-desc">Quick view (use Protect app for full playback)</span></li>
+        <li><svg viewBox="0 0 22 22" fill="none"><rect x="5" y="3" width="12" height="16" rx="6" stroke="#4a9eda" stroke-width="1.5"/><line x1="11" y1="7" x2="11" y2="13" stroke="#4a9eda" stroke-width="1.5" stroke-linecap="round"/><circle cx="11" cy="15" r="1.5" fill="#4a9eda" opacity="0.4"/></svg><span class="dl-name">Adjust thermostat</span><span class="dl-desc">Set temperature, change mode</span></li>
         <li><svg viewBox="0 0 22 22" fill="none"><path d="M11 3l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4l2-4z" stroke="#4a9eda" stroke-width="1.5" fill="#4a9eda" opacity="0.3"/></svg><span class="dl-name">Automations</span><span class="dl-desc">Automatic rules (e.g., lights at sunset)</span></li>
+        <li><svg viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="2" stroke="#4a9eda" stroke-width="1.5"/><line x1="3" y1="8" x2="19" y2="8" stroke="#4a9eda" stroke-width="1"/><line x1="11" y1="8" x2="11" y2="19" stroke="#4a9eda" stroke-width="1"/></svg><span class="dl-name">Dashboard</span><span class="dl-desc">Customizable overview of everything</span></li>
       </ul>
     </div>
-    <div class="tip"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#6adf8a" stroke-width="1.5"/><line x1="10" y1="5" x2="10" y2="12" stroke="#6adf8a" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="15" r="1" fill="#6adf8a"/></svg><div><span class="tip-label">Tip: </span>Home Assistant handles everything day-to-day. You only need the UniFi app for network admin tasks and the Aqara app for managing lock PIN codes.</div></div>
+
+    <div class="subsection"><h3>Understanding the Dashboard</h3>
+      <p>The <strong>Dashboard</strong> is your main screen in Home Assistant. It shows cards for each device &#8212; tap a card to control it. You can customize what appears on the dashboard by clicking the three-dot menu (top right) and selecting <strong>Edit Dashboard</strong>.</p>
+      <p>Common card types you'll see: light toggles, lock controls, camera feeds, thermostat controls, and sensor readings (temperature, humidity, motion). Cards are organized by room/area.</p>
+    </div>
+
+    <div class="subsection"><h3>Creating Automations</h3>
+      <p>Automations are "if this, then that" rules that make your home smart. Here's how to create one:</p>
+      <div class="step"><span class="step-number">1</span><span class="step-title">Go to Settings &rarr; Automations &amp; Scenes</span><div class="step-detail">Tap <strong>Create Automation</strong> and choose <strong>Create new automation</strong>.</div></div>
+      <div class="step"><span class="step-number">2</span><span class="step-title">Add a Trigger</span><div class="step-detail">This is the "when" &#8212; what starts the automation. Examples: time of day (sunset, 10:00 PM), device state change (motion detected, door opened), or a sensor reading (temperature below 65&#176;F).</div></div>
+      <div class="step"><span class="step-number">3</span><span class="step-title">Add Conditions (optional)</span><div class="step-detail">This is the "only if" &#8212; extra checks before the action runs. Examples: only if it's after dark, only if someone is home, only on weekdays.</div></div>
+      <div class="step"><span class="step-number">4</span><span class="step-title">Add Actions</span><div class="step-detail">This is the "do this" &#8212; what happens. Examples: turn on lights, lock the door, set thermostat to 68&#176;F, send a notification to your phone.</div></div>
+      <div class="step"><span class="step-number">5</span><span class="step-title">Save and test</span><div class="step-detail">Give it a name (e.g., "Lock door at bedtime") and save. You can manually trigger it from the automation list to test.</div></div>
+    </div>
+
+    <div class="subsection"><h3>Popular Automation Ideas</h3>
+      <ul class="device-list">
+        <li><svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="6" r="3" stroke="#4a9eda" stroke-width="1.5"/><line x1="11" y1="9" x2="11" y2="14" stroke="#4a9eda" stroke-width="1.5"/><path d="M7 14h8l-1 5H8l-1-5z" stroke="#4a9eda" stroke-width="1.5" fill="none"/></svg><span class="dl-name">Porch lights at sunset</span><span class="dl-desc">Trigger: sunset | Action: turn on porch</span></li>
+        <li><svg viewBox="0 0 22 22" fill="none"><rect x="5" y="9" width="12" height="9" rx="2" stroke="#4a9eda" stroke-width="1.5"/><path d="M8 9V7a3 3 0 016 0v2" stroke="#4a9eda" stroke-width="1.5" fill="none"/><circle cx="11" cy="14" r="1.2" fill="#4a9eda"/></svg><span class="dl-name">Auto-lock at 11 PM</span><span class="dl-desc">Trigger: 11:00 PM | Action: lock front door</span></li>
+        <li><svg viewBox="0 0 22 22" fill="none"><rect x="5" y="3" width="12" height="16" rx="6" stroke="#4a9eda" stroke-width="1.5"/><line x1="11" y1="7" x2="11" y2="13" stroke="#4a9eda" stroke-width="1.5" stroke-linecap="round"/></svg><span class="dl-name">Night mode thermostat</span><span class="dl-desc">Trigger: 10 PM | Action: set to 68&#176;F</span></li>
+        <li><svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="6" r="3" stroke="#4a9eda" stroke-width="1.5"/><line x1="11" y1="9" x2="11" y2="14" stroke="#4a9eda" stroke-width="1.5"/><path d="M7 14h8l-1 5H8l-1-5z" stroke="#4a9eda" stroke-width="1.5" fill="none"/></svg><span class="dl-name">All lights off at midnight</span><span class="dl-desc">Trigger: 12:00 AM | Action: all lights off</span></li>
+        <li><svg viewBox="0 0 22 22" fill="none"><rect x="5" y="3" width="12" height="16" rx="2" stroke="#4a9eda" stroke-width="1.5"/><circle cx="11" cy="17" r="1" fill="#4a9eda"/><rect x="8" y="6" width="6" height="4" rx="1" fill="#4a9eda" opacity="0.3"/></svg><span class="dl-name">Phone notification on door unlock</span><span class="dl-desc">Trigger: lock unlocked | Action: notify</span></li>
+      </ul>
+    </div>
+
+    <div class="subsection"><h3>Using Scenes</h3>
+      <p><strong>Scenes</strong> let you set multiple devices to specific states with one tap. For example, a "Movie Night" scene could dim the living room lights to 20%, turn off the kitchen lights, and set the thermostat to 72&#176;F.</p>
+      <div class="step"><span class="step-number">1</span><span class="step-title">Create a scene</span><div class="step-detail">Go to <strong>Settings &rarr; Automations &amp; Scenes &rarr; Scenes tab &rarr; Create Scene</strong>.</div></div>
+      <div class="step"><span class="step-number">2</span><span class="step-title">Set device states</span><div class="step-detail">Add the devices you want to control. Set each one to the desired state (light brightness, thermostat temp, lock locked/unlocked, etc.).</div></div>
+      <div class="step"><span class="step-number">3</span><span class="step-title">Save and use</span><div class="step-detail">Give it a name and save. You can activate scenes from the dashboard, through automations, or by voice ("Hey Siri, activate Movie Night").</div></div>
+    </div>
+
+    <div class="subsection"><h3>Video Guides</h3>
+      <p>These videos walk you through Home Assistant from the basics to creating automations:</p>
+      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin:12px 0;">
+        <iframe src="https://www.youtube.com/embed/Z4gvkmJ8q48" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <p style="color:#7a9aaa;font-size:0.85em;margin-bottom:16px;">Ultimate Home Assistant Beginner's Guide &#8212; complete walkthrough</p>
+      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin:12px 0;">
+        <iframe src="https://www.youtube.com/embed/H_1sCUuRj8k" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <p style="color:#7a9aaa;font-size:0.85em;margin-bottom:16px;">Home Assistant Automations, Scripts &amp; Scenes for Beginners</p>
+    </div>
+
+    <div class="tip"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#6adf8a" stroke-width="1.5"/><line x1="10" y1="5" x2="10" y2="12" stroke="#6adf8a" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="15" r="1" fill="#6adf8a"/></svg><div><span class="tip-label">Tip: </span>Start simple. Get comfortable controlling devices from the dashboard first, then try creating one automation. You don't need to set up everything at once.</div></div>
     <div class="helpful-links">
-      <h4>Helpful Links</h4>
-      <a href="https://www.home-assistant.io" target="_blank" rel="noopener">Home Assistant Official Site (home-assistant.io)</a>
+      <h4>Official Documentation</h4>
+      <a href="https://www.home-assistant.io/getting-started/" target="_blank" rel="noopener">Getting Started Guide (home-assistant.io)</a>
+      <a href="https://www.home-assistant.io/docs/automation/" target="_blank" rel="noopener">Automations Documentation</a>
+      <a href="https://www.home-assistant.io/docs/scene/" target="_blank" rel="noopener">Scenes Documentation</a>
+      <a href="https://www.home-assistant.io/dashboards/" target="_blank" rel="noopener">Dashboard Customization Guide</a>
+      <a href="https://www.home-assistant.io/integrations/matter/" target="_blank" rel="noopener">Matter Integration Docs</a>
+      <a href="https://www.home-assistant.io/integrations/homekit_controller/" target="_blank" rel="noopener">HomeKit Integration Docs</a>
+      <a href="https://www.home-assistant.io/integrations/unifiprotect/" target="_blank" rel="noopener">UniFi Protect Integration Docs</a>
+    </div>
+    <div class="helpful-links">
+      <h4>App Downloads &amp; Community</h4>
       <a href="https://apps.apple.com/app/home-assistant/id1099568401" target="_blank" rel="noopener">Home Assistant Companion &#8212; App Store (iOS)</a>
       <a href="https://play.google.com/store/apps/details?id=io.homeassistant.companion.android" target="_blank" rel="noopener">Home Assistant Companion &#8212; Google Play (Android)</a>
-      <a href="https://www.home-assistant.io/docs/" target="_blank" rel="noopener">Home Assistant Documentation</a>
       <a href="https://community.home-assistant.io" target="_blank" rel="noopener">Home Assistant Community Forum</a>
+      <a href="https://www.home-assistant.io" target="_blank" rel="noopener">Home Assistant Official Site</a>
     </div>
   </div>
 </div>
