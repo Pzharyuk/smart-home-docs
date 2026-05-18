@@ -91,6 +91,7 @@
   <div class="tab" data-filter="switches"><svg viewBox="0 0 20 20" fill="none"><rect x="5" y="2" width="10" height="16" rx="3" stroke="#7eb8da" stroke-width="1.5"/><circle cx="10" cy="8" r="2.5" fill="#7eb8da"/><line x1="10" y1="12" x2="10" y2="15" stroke="#7eb8da" stroke-width="1.5" stroke-linecap="round"/></svg>Kasa Switches</div>
   <div class="tab" data-filter="ha"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2L2 9v8a2 2 0 002 2h12a2 2 0 002-2V9L10 2z" stroke="#7eb8da" stroke-width="1.5"/><rect x="7" y="12" width="6" height="7" rx="1" fill="#7eb8da" opacity="0.4"/></svg>Home Assistant</div>
   <div class="tab" data-filter="ipad"><svg viewBox="0 0 20 20" fill="none"><rect x="4" y="2" width="12" height="16" rx="2" stroke="#7eb8da" stroke-width="1.5"/><circle cx="10" cy="16" r="0.8" fill="#7eb8da"/><rect x="6" y="4" width="8" height="10" rx="1" fill="#7eb8da" opacity="0.15"/></svg>iPad Panel</div>
+  <div class="tab" data-filter="troubleshoot"><svg viewBox="0 0 20 20" fill="none"><path d="M12 5a1 1 0 000 1l1.3 1.3a1 1 0 001 0l3-3a5 5 0 01-6.5 6.5l-5.6 5.6a1.7 1.7 0 01-2.4-2.4l5.6-5.6A5 5 0 0112 5z" stroke="#7eb8da" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Troubleshoot</div>
   <div class="tab" data-filter="faq"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7eb8da" stroke-width="1.5"/><path d="M8 7.5a2.5 2.5 0 013.5 2.3c0 1.2-1.5 1.5-1.5 2.7" stroke="#7eb8da" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="10" cy="15" r="0.8" fill="#7eb8da"/></svg>FAQ</div>
 </div>
 
@@ -667,6 +668,65 @@
       <a href="https://apps.apple.com/app/aqara-home/id1115101477" target="_blank" rel="noopener">Aqara Home &#8212; App Store</a>
       <a href="https://apps.apple.com/app/unifi/id1057750338" target="_blank" rel="noopener">UniFi &#8212; App Store</a>
     </div>
+  </div>
+</div>
+
+<!-- TROUBLESHOOTING -->
+<div class="section" data-category="troubleshoot">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke="#4a9eda" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Troubleshooting</h2>
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="section-body">
+
+    <div class="subsection"><h3>Lock Not Responding in Home Assistant</h3>
+      <div class="step"><span class="step-number">1</span><span class="step-title">Check the Aqara Hub M3</span><div class="step-detail">Is the hub powered on? Look for the LED light on the Hub M3. If it's off, check the power cable and PoE connection. Unplug and re-plug the hub, then wait 60 seconds for it to reconnect.</div></div>
+      <div class="step"><span class="step-number">2</span><span class="step-title">Check lock batteries</span><div class="step-detail">The Aqara app shows battery level on the Front Door screen. If it says <strong>"Low"</strong> (red indicator), replace the batteries immediately. Low batteries cause intermittent disconnects.</div></div>
+      <div class="step"><span class="step-number">3</span><span class="step-title">Restart the Hub M3</span><div class="step-detail">Unplug the Hub M3, wait 10 seconds, plug it back in. Wait 1-2 minutes for it to fully boot and reconnect to all devices.</div></div>
+      <div class="step"><span class="step-number">4</span><span class="step-title">Check Home Assistant</span><div class="step-detail">In Home Assistant, go to <strong>Settings &rarr; Devices &amp; Services &rarr; Matter</strong>. Find the lock and check its status. If it shows "Unavailable," try clicking <strong>Reconfigure</strong>.</div></div>
+      <div class="step"><span class="step-number">5</span><span class="step-title">Re-pair as a last resort</span><div class="step-detail">If nothing works, remove the lock from Home Assistant (Settings &rarr; Devices &rarr; Delete), then re-add it via Matter using the Aqara app's Matter pairing code.</div></div>
+    </div>
+
+    <div class="subsection"><h3>Lock PIN Code Not Working</h3>
+      <div class="step"><span class="step-number">1</span><span class="step-title">Wake the keypad first</span><div class="step-detail">The keypad goes to sleep to save battery. Touch the keypad area to wake it up, wait for the numbers to light up, then enter your code.</div></div>
+      <div class="step"><span class="step-number">2</span><span class="step-title">Check if the code is still active</span><div class="step-detail">Open the Aqara Home app &rarr; Front Door &rarr; User Management. Verify the code is listed and hasn't expired (one-time codes expire after use, periodic codes only work during set hours).</div></div>
+      <div class="step"><span class="step-number">3</span><span class="step-title">Check Failed Attempt Lockout</span><div class="step-detail">If too many wrong codes were entered, the lock temporarily locks out PIN entry. Wait 5 minutes and try again, or use a fingerprint or the physical key.</div></div>
+      <div class="step"><span class="step-number">4</span><span class="step-title">Use the emergency key</span><div class="step-detail">Remove the cover at the bottom of the exterior panel to reveal the keyhole. Insert the physical key and turn to unlock. See the emergency key diagram in the Overview section.</div></div>
+    </div>
+
+    <div class="subsection"><h3>Wi-Fi Not Working</h3>
+      <div class="step"><span class="step-number">1</span><span class="step-title">Check the UCG-MAX Gateway</span><div class="step-detail">Look at the UCG-MAX Cloud Gateway Max. Is the LED on? If it's off or blinking red, power-cycle it: unplug, wait 30 seconds, plug back in. Wait 3-5 minutes for full boot.</div></div>
+      <div class="step"><span class="step-number">2</span><span class="step-title">Check your device</span><div class="step-detail">Try forgetting the Wi-Fi network on your phone/laptop and reconnecting. Make sure you're using the correct password.</div></div>
+      <div class="step"><span class="step-number">3</span><span class="step-title">Check if other devices can connect</span><div class="step-detail">If only one device can't connect, the issue is likely with that device. If nothing can connect, the router may need a restart.</div></div>
+      <div class="step"><span class="step-number">4</span><span class="step-title">Check internet connection</span><div class="step-detail">If Wi-Fi connects but there's no internet, check the UniFi app &rarr; Dashboard for any WAN/internet status warnings. You may need to restart your modem (the separate box from your internet provider).</div></div>
+    </div>
+
+    <div class="subsection"><h3>Smart Switches Not Responding</h3>
+      <div class="step"><span class="step-number">1</span><span class="step-title">Try the physical switch</span><div class="step-detail">Press the Kasa switch on the wall. If the light turns on/off physically but Home Assistant doesn't show the change, the issue is the Matter connection, not the switch itself.</div></div>
+      <div class="step"><span class="step-number">2</span><span class="step-title">Check the Smart Wi-Fi network</span><div class="step-detail">Kasa switches connect to the dedicated Smart network (2.4GHz). If that network is down, switches lose connectivity. Check the UniFi app for the Smart network status.</div></div>
+      <div class="step"><span class="step-number">3</span><span class="step-title">Power cycle the switch</span><div class="step-detail">Turn off the circuit breaker for that switch, wait 10 seconds, turn it back on. The switch will reconnect automatically.</div></div>
+      <div class="step"><span class="step-number">4</span><span class="step-title">Re-pair via Matter</span><div class="step-detail">If the switch still isn't showing in Home Assistant, remove it from Home Assistant and the Kasa app, then re-pair: Kasa app &rarr; enable Matter &rarr; get pairing code &rarr; add in Home Assistant.</div></div>
+    </div>
+
+    <div class="subsection"><h3>Cameras Not Showing in Home Assistant</h3>
+      <div class="step"><span class="step-number">1</span><span class="step-title">Check camera power</span><div class="step-detail">Make sure the camera is powered on and the status LED is lit. PoE cameras get power through the network cable; check the cable connection at both ends.</div></div>
+      <div class="step"><span class="step-number">2</span><span class="step-title">Check UniFi Protect</span><div class="step-detail">Open the UniFi app and switch to Protect. If cameras show here but not in Home Assistant, the issue is the Home Assistant integration.</div></div>
+      <div class="step"><span class="step-number">3</span><span class="step-title">Restart the UniFi Protect integration</span><div class="step-detail">In Home Assistant, go to <strong>Settings &rarr; Devices &amp; Services &rarr; UniFi Protect</strong>. Click the three dots and select <strong>Reload</strong>.</div></div>
+    </div>
+
+    <div class="subsection"><h3>Hub M3 Shows "Offline" in Aqara App</h3>
+      <div class="step"><span class="step-number">1</span><span class="step-title">Check network connection</span><div class="step-detail">The Hub M3 connects via Wi-Fi or PoE ethernet. If using PoE, check the ethernet cable. If using Wi-Fi, make sure the hub is within range of the router.</div></div>
+      <div class="step"><span class="step-number">2</span><span class="step-title">Power cycle the hub</span><div class="step-detail">Unplug the Hub M3, wait 15 seconds, plug it back in. The LED will blink while it reconnects. Wait 1-2 minutes.</div></div>
+      <div class="step"><span class="step-number">3</span><span class="step-title">Check the Aqara app</span><div class="step-detail">Open Aqara Home &rarr; tap the Hub M3 card. If it still shows offline after restart, try removing and re-adding the hub in the app (you'll need to re-pair connected devices).</div></div>
+    </div>
+
+    <div class="subsection"><h3>Home Assistant Not Accessible</h3>
+      <div class="step"><span class="step-number">1</span><span class="step-title">Check if you're on the home network</span><div class="step-detail">Home Assistant is only accessible from the home Wi-Fi (unless remote access is configured). Make sure your phone is connected to the home Wi-Fi, not cellular.</div></div>
+      <div class="step"><span class="step-number">2</span><span class="step-title">Try the direct IP address</span><div class="step-detail">If <strong>homeassistant.local</strong> doesn't work, try the IP address directly in a browser (ask the homeowner for the IP).</div></div>
+      <div class="step"><span class="step-number">3</span><span class="step-title">Restart Home Assistant</span><div class="step-detail">If you have physical access to the Home Assistant device, unplug it, wait 30 seconds, and plug it back in. It takes 2-5 minutes to fully boot.</div></div>
+    </div>
+
+    <div class="tip"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#6adf8a" stroke-width="1.5"/><line x1="10" y1="5" x2="10" y2="12" stroke="#6adf8a" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="15" r="1" fill="#6adf8a"/></svg><div><span class="tip-label">General rule: </span>When in doubt, restart the device. Most smart home issues are solved by power-cycling the affected device. Start with the hub or gateway, then the individual device.</div></div>
   </div>
 </div>
 
