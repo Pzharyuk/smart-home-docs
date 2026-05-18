@@ -671,6 +671,60 @@
   </div>
 </div>
 
+<!-- ALTERNATIVE CONTROL METHODS -->
+<div class="section" data-category="ha">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><svg class="icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#4a9eda" stroke-width="2"/><path d="M8 12h8M12 8v8" stroke="#4a9eda" stroke-width="2" stroke-linecap="round"/></svg> Other Ways to Control Your Smart Home</h2>
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="subsection">
+      <h3>You're Not Locked Into One App</h3>
+      <p>While <strong>Home Assistant</strong> is the central hub, you can also control devices through their individual apps or voice assistants. Here's a breakdown of your options:</p>
+    </div>
+
+    <div class="subsection">
+      <h3>Control by App</h3>
+      <ul class="device-list">
+        <li><svg viewBox="0 0 22 22" fill="none"><path d="M11 2L3 8v10a2 2 0 002 2h12a2 2 0 002-2V8L11 2z" stroke="#4a9eda" stroke-width="1.5"/><rect x="8" y="12" width="6" height="8" rx="1" fill="#4a9eda" opacity="0.3"/></svg><span class="dl-name">Home Assistant</span><span class="dl-desc">Everything &#8212; locks, lights, cameras, automations</span></li>
+        <li><svg viewBox="0 0 22 22" fill="none"><rect x="5" y="9" width="12" height="9" rx="2" stroke="#4a9eda" stroke-width="1.5"/><path d="M8 9V7a3 3 0 016 0v2" stroke="#4a9eda" stroke-width="1.5" fill="none"/><circle cx="11" cy="14" r="1.2" fill="#4a9eda"/></svg><span class="dl-name">Aqara Home</span><span class="dl-desc">Lock PINs, fingerprints, hub settings</span></li>
+        <li><svg viewBox="0 0 22 22" fill="none"><rect x="5" y="2" width="12" height="18" rx="3" stroke="#4a9eda" stroke-width="1.5"/><circle cx="11" cy="9" r="2.5" stroke="#4a9eda" stroke-width="1.2"/><line x1="11" y1="14" x2="11" y2="17" stroke="#4a9eda" stroke-width="1.5" stroke-linecap="round"/></svg><span class="dl-name">Kasa Smart</span><span class="dl-desc">Light switches &#8212; on/off, schedules, timer</span></li>
+        <li><svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="3" fill="#4a9eda"/><path d="M11 4a7 7 0 010 14" stroke="#4a9eda" stroke-width="1.5" fill="none"/><path d="M11 7a4 4 0 010 8" stroke="#4a9eda" stroke-width="1.5" fill="none"/></svg><span class="dl-name">UniFi</span><span class="dl-desc">Network settings, Wi-Fi, camera recordings</span></li>
+      </ul>
+      <p>Each app works independently. You can control Kasa switches through the Kasa app without Home Assistant, manage lock codes through the Aqara app directly, and view cameras through UniFi Protect. Home Assistant simply brings everything together into one dashboard.</p>
+    </div>
+
+    <div class="subsection">
+      <h3>Voice Assistants</h3>
+      <p>Your smart home devices support multiple voice assistants. You can use any of these to control lights and other compatible devices by voice:</p>
+      <ul class="device-list">
+        <li><svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#4a9eda" stroke-width="1.5"/><path d="M8 11a3 3 0 006 0" stroke="#4a9eda" stroke-width="1.3" fill="none"/><line x1="11" y1="14" x2="11" y2="17" stroke="#4a9eda" stroke-width="1.3"/><line x1="8" y1="17" x2="14" y2="17" stroke="#4a9eda" stroke-width="1.3"/></svg><span class="dl-name">Amazon Alexa</span><span class="dl-desc">"Alexa, turn off the kitchen lights"</span></li>
+        <li><svg viewBox="0 0 22 22" fill="none"><path d="M6 8h10v5a5 5 0 01-10 0V8z" stroke="#4a9eda" stroke-width="1.5" fill="none"/><line x1="11" y1="18" x2="11" y2="20" stroke="#4a9eda" stroke-width="1.5"/><line x1="8" y1="20" x2="14" y2="20" stroke="#4a9eda" stroke-width="1.5"/><rect x="9" y="5" width="4" height="3" rx="2" fill="#4a9eda" opacity="0.4"/></svg><span class="dl-name">Google Home / Assistant</span><span class="dl-desc">"Hey Google, dim the living room to 50%"</span></li>
+        <li><svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#4a9eda" stroke-width="1.5"/><circle cx="11" cy="11" r="3" fill="#4a9eda" opacity="0.3"/><circle cx="11" cy="11" r="5" stroke="#4a9eda" stroke-width="0.8" fill="none"/></svg><span class="dl-name">Apple Siri / HomeKit</span><span class="dl-desc">"Hey Siri, lock the front door"</span></li>
+      </ul>
+    </div>
+
+    <div class="subsection">
+      <h3>Using Alexa or Google Home as a Hub</h3>
+      <p>If you have an <strong>Amazon Echo</strong>, <strong>Google Nest Hub</strong>, or <strong>Apple HomePod</strong> in the house, they can act as secondary controllers:</p>
+      <div class="step"><span class="step-number">1</span><span class="step-title">Kasa switches work natively</span><div class="step-detail">Kasa switches support Alexa, Google, and Siri out of the box. Just add them in the Alexa app, Google Home app, or Apple Home app using your TP-Link/Kasa account. No Home Assistant needed for basic voice control.</div></div>
+      <div class="step"><span class="step-number">2</span><span class="step-title">Aqara lock via Matter</span><div class="step-detail">Since the Aqara Hub M3 supports Matter, the lock can be shared with other Matter-compatible platforms (Apple Home, Google Home, Alexa with Matter support). In the Aqara app, go to the Hub M3 settings and look for <strong>Matter Sharing</strong> to generate a pairing code for another platform.</div></div>
+      <div class="step"><span class="step-number">3</span><span class="step-title">Home Assistant exposes devices</span><div class="step-detail">Home Assistant can expose all your devices to Alexa, Google, or HomeKit through its built-in integrations. This means you can control everything by voice without configuring each device individually in each assistant.</div></div>
+    </div>
+
+    <div class="tip"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#6adf8a" stroke-width="1.5"/><line x1="10" y1="5" x2="10" y2="12" stroke="#6adf8a" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="15" r="1" fill="#6adf8a"/></svg><div><span class="tip-label">Tip: </span>The simplest setup is to use Home Assistant as the single hub that talks to Alexa/Google/Siri. That way you configure everything once in Home Assistant and all voice assistants automatically get access to all devices.</div></div>
+
+    <div class="helpful-links">
+      <h4>Helpful Links</h4>
+      <a href="https://www.home-assistant.io/integrations/alexa/" target="_blank" rel="noopener">Home Assistant + Alexa Integration</a>
+      <a href="https://www.home-assistant.io/integrations/google_assistant/" target="_blank" rel="noopener">Home Assistant + Google Assistant Integration</a>
+      <a href="https://www.home-assistant.io/integrations/homekit/" target="_blank" rel="noopener">Home Assistant + Apple HomeKit Integration</a>
+      <a href="https://apps.apple.com/app/kasa-smart/id1034035493" target="_blank" rel="noopener">Kasa Smart App &#8212; App Store</a>
+      <a href="https://play.google.com/store/apps/details?id=com.tplink.kasa_android" target="_blank" rel="noopener">Kasa Smart App &#8212; Google Play</a>
+    </div>
+  </div>
+</div>
+
 <!-- TROUBLESHOOTING -->
 <div class="section" data-category="troubleshoot">
   <div class="section-header" onclick="toggleSection(this)">
