@@ -398,7 +398,7 @@
     </div>
     <div class="subsection"><h3>Adding a New Kasa Switch</h3>
       <div class="step"><span class="step-number">1</span><span class="step-title">Install the switch physically</span><div class="step-detail">Turn off the breaker, replace the old switch with the Kasa switch, restore power.</div></div>
-      <div class="step"><span class="step-number">2</span><span class="step-title">Set up in Kasa app first</span><div class="step-detail">Download the Kasa app, create a TP-Link account, and add the switch. Enable <strong>Matter</strong> in the switch settings and get the Matter pairing code.</div></div>
+      <div class="step"><span class="step-number">2</span><span class="step-title">Set up in Kasa app first</span><div class="step-detail">Download the Kasa app, create a TP-Link account, and add the switch. Enable <strong>Matter</strong> in the switch settings and get the Matter pairing code. <strong>Note:</strong> The QR code / Matter pairing code is printed on a label hidden behind the faceplate of the switch. You'll need to remove the faceplate (snap-off cover) to find it.</div></div>
       <div class="step"><span class="step-number">3</span><span class="step-title">Add to Home Assistant via Matter</span><div class="step-detail">In Home Assistant, go to <strong>Settings &rarr; Devices &amp; Services &rarr; Add Integration &rarr; Matter</strong>. Enter the Matter pairing code from the Kasa app. The switch will appear in your dashboard.</div></div>
     </div>
     <div class="tip"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#6adf8a" stroke-width="1.5"/><line x1="10" y1="5" x2="10" y2="12" stroke="#6adf8a" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="15" r="1" fill="#6adf8a"/></svg><div><span class="tip-label">Tip: </span>Once added to Home Assistant via Matter, you can control the switch even without internet &#8212; Matter works locally on your network.</div></div>
@@ -577,7 +577,7 @@
     <p>If the wall-mounted iPad has been reset (or you're setting it up for a new owner), follow these steps to restore smart home control.</p>
     <div class="subsection"><h3>Initial iPad Setup</h3>
       <div class="step"><span class="step-number">1</span><span class="step-title">Complete iOS setup</span><div class="step-detail">Follow the on-screen prompts to set up the iPad (language, Wi-Fi, Apple ID). Connect to the main home Wi-Fi network.</div></div>
-      <div class="step"><span class="step-number">2</span><span class="step-title">Download required apps</span><div class="step-detail">Open the App Store and install these three apps:<br>&#8226; <strong>Home Assistant</strong> &#8212; main smart home control<br>&#8226; <strong>Aqara Home</strong> &#8212; lock PIN code management<br>&#8226; <strong>UniFi</strong> &#8212; network and camera access</div></div>
+      <div class="step"><span class="step-number">2</span><span class="step-title">Download required apps</span><div class="step-detail">Open the App Store and install these apps:<br>&#8226; <strong>Home Assistant</strong> &#8212; main smart home control<br>&#8226; <strong>Aqara Home</strong> &#8212; lock PIN code management<br>&#8226; <strong>UniFi</strong> &#8212; network settings<br>&#8226; <strong>UniFi Protect</strong> &#8212; camera viewing and playback<br>&#8226; <strong>Resideo</strong> &#8212; thermostat control</div></div>
     </div>
     <div class="subsection"><h3>App Login Credentials</h3>
       <p>Each app requires its own account. Ask the previous owner or property manager to provide these credentials, or transfer ownership to your own accounts:</p>
@@ -594,10 +594,12 @@
     </div>
     <div class="warning"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2L1 18h18L10 2z" stroke="#daa520" stroke-width="1.5" fill="none"/><line x1="10" y1="8" x2="10" y2="13" stroke="#daa520" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="16" r="1" fill="#daa520"/></svg><div><span class="warning-label">Important: </span>If you're the new owner, ask the previous owner to transfer their Aqara, UniFi, and Home Assistant accounts to you &#8212; or create new accounts and have the previous owner add you as an admin before they leave. Without proper credentials, you won't be able to manage PIN codes or network settings.</div></div>
     <div class="helpful-links">
-      <h4>App Download Links</h4>
+      <h4>App Download Links (iOS)</h4>
       <a href="https://apps.apple.com/app/home-assistant/id1099568401" target="_blank" rel="noopener">Home Assistant &#8212; App Store</a>
       <a href="https://apps.apple.com/app/aqara-home/id1115101477" target="_blank" rel="noopener">Aqara Home &#8212; App Store</a>
       <a href="https://apps.apple.com/app/unifi/id1057750338" target="_blank" rel="noopener">UniFi &#8212; App Store</a>
+      <a href="https://apps.apple.com/app/unifi-protect/id1453769050" target="_blank" rel="noopener">UniFi Protect &#8212; App Store</a>
+      <a href="https://apps.apple.com/us/app/resideo-smart-home/id880332077" target="_blank" rel="noopener">Resideo &#8212; App Store</a>
     </div>
   </div>
 </div>
@@ -723,7 +725,21 @@
     <span class="arrow">&#9660;</span>
   </div>
   <div class="section-body">
-    <div class="faq"><div class="faq-q" onclick="toggleFaq(this)">What apps do I need on my phone?<span>+</span></div><div class="faq-a"><strong>Home Assistant</strong> &#8212; for daily control of everything.<br><strong>Aqara Home</strong> &#8212; only for managing lock PIN codes and fingerprints.<br><strong>UniFi</strong> &#8212; only for network admin or viewing camera recordings.<br>That's it &#8212; three apps total, but you'll mostly just use Home Assistant.</div></div>
+    <div class="faq"><div class="faq-q" onclick="toggleFaq(this)">What apps do I need on my phone?<span>+</span></div><div class="faq-a">
+      Here are all the apps for your smart home. You'll mostly use Home Assistant day-to-day, but the others are needed for specific tasks.<br><br>
+      <strong>Home Assistant</strong> &#8212; main hub, controls everything in one place<br>
+      &#8226; <a href="https://apps.apple.com/app/home-assistant/id1099568401" target="_blank" rel="noopener" style="color:#4a9eda;">iOS</a> &#8226; <a href="https://play.google.com/store/apps/details?id=io.homeassistant.companion.android" target="_blank" rel="noopener" style="color:#4a9eda;">Android</a><br><br>
+      <strong>Aqara Home</strong> &#8212; lock PIN codes, fingerprints, hub settings<br>
+      &#8226; <a href="https://apps.apple.com/app/aqara-home/id1115101477" target="_blank" rel="noopener" style="color:#4a9eda;">iOS</a> &#8226; <a href="https://play.google.com/store/apps/details?id=com.lumiunited.aqarahome" target="_blank" rel="noopener" style="color:#4a9eda;">Android</a><br><br>
+      <strong>UniFi</strong> &#8212; network admin, Wi-Fi settings, device management<br>
+      &#8226; <a href="https://apps.apple.com/app/unifi/id1057750338" target="_blank" rel="noopener" style="color:#4a9eda;">iOS</a> &#8226; <a href="https://play.google.com/store/apps/details?id=com.ubnt.easyunifi" target="_blank" rel="noopener" style="color:#4a9eda;">Android</a><br><br>
+      <strong>UniFi Protect</strong> &#8212; camera live view, playback, motion alerts<br>
+      &#8226; <a href="https://apps.apple.com/app/unifi-protect/id1453769050" target="_blank" rel="noopener" style="color:#4a9eda;">iOS</a> &#8226; <a href="https://play.google.com/store/apps/details?id=com.ubnt.unifi.protect" target="_blank" rel="noopener" style="color:#4a9eda;">Android</a><br><br>
+      <strong>Kasa Smart</strong> &#8212; light switch setup, Matter pairing, schedules<br>
+      &#8226; <a href="https://apps.apple.com/app/kasa-smart/id1034035493" target="_blank" rel="noopener" style="color:#4a9eda;">iOS</a> &#8226; <a href="https://play.google.com/store/apps/details?id=com.tplink.kasa_android" target="_blank" rel="noopener" style="color:#4a9eda;">Android</a><br><br>
+      <strong>Resideo</strong> &#8212; thermostat control, schedules, temperature sensors<br>
+      &#8226; <a href="https://apps.apple.com/us/app/resideo-smart-home/id880332077" target="_blank" rel="noopener" style="color:#4a9eda;">iOS</a> &#8226; <a href="https://play.google.com/store/apps/details?id=com.resideo.app" target="_blank" rel="noopener" style="color:#4a9eda;">Android</a>
+    </div></div>
     <div class="faq"><div class="faq-q" onclick="toggleFaq(this)">The internet is down. What still works?<span>+</span></div><div class="faq-a">Almost everything! Matter devices (Kasa switches, Aqara lock via hub) work locally on your network &#8212; no internet needed. Your lock PIN codes still work on the keypad. Cameras will still record locally. The only thing that won't work is remote access from outside your home.</div></div>
     <div class="faq"><div class="faq-q" onclick="toggleFaq(this)">How do I change the Wi-Fi password?<span>+</span></div><div class="faq-a">Open the UniFi app &rarr; Settings &rarr; WiFi &rarr; tap your network name &rarr; change the password &rarr; Save. All devices will need to reconnect with the new password.</div></div>
     <div class="faq"><div class="faq-q" onclick="toggleFaq(this)">Can I give someone temporary access to the door?<span>+</span></div><div class="faq-a">Yes! In the Aqara Home app, go to your lock &rarr; User Management &rarr; Add Password &rarr; choose "One-time" or "Periodic." One-time codes expire after a single use. Periodic codes only work during the days/hours you set.</div></div>
