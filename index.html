@@ -470,6 +470,17 @@
       <div class="step"><span class="step-number">3</span><span class="step-title">Save and use</span><div class="step-detail">Give it a name and save. You can activate scenes from the dashboard, through automations, or by voice ("Hey Siri, activate Movie Night").</div></div>
     </div>
 
+    <div class="subsection"><h3>Adding a New Admin User (For New Owners)</h3>
+      <p>If you're a new homeowner or need to create a fresh admin account, here's how:</p>
+      <div class="step"><span class="step-number">1</span><span class="step-title">Log in with the existing admin account</span><div class="step-detail">Ask the previous owner for the current admin username and password. Log into Home Assistant using the app or browser.</div></div>
+      <div class="step"><span class="step-number">2</span><span class="step-title">Go to People settings</span><div class="step-detail">Navigate to <strong>Settings &rarr; People</strong> (under the "People &amp; Zones" section).</div></div>
+      <div class="step"><span class="step-number">3</span><span class="step-title">Add a new person</span><div class="step-detail">Tap <strong>"Add Person"</strong>. Enter the new owner's name. Toggle <strong>"Allow person to login"</strong> to on.</div></div>
+      <div class="step"><span class="step-number">4</span><span class="step-title">Create their login credentials</span><div class="step-detail">Enter a <strong>username</strong> and <strong>password</strong> for the new user. Make sure to toggle <strong>"Administrator"</strong> to on &#8212; this gives them full control over Home Assistant settings, integrations, and automations.</div></div>
+      <div class="step"><span class="step-number">5</span><span class="step-title">Test the new account</span><div class="step-detail">Log out and log back in using the new admin credentials. Verify you can access Settings, Devices, and Automations.</div></div>
+      <div class="step"><span class="step-number">6</span><span class="step-title">Remove the old admin (optional)</span><div class="step-detail">Once the new admin account is confirmed working, go to <strong>Settings &rarr; People</strong>, tap the old owner's account, and delete it. This ensures only the new owner has admin access.</div></div>
+    </div>
+    <div class="warning"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2L1 18h18L10 2z" stroke="#daa520" stroke-width="1.5" fill="none"/><line x1="10" y1="8" x2="10" y2="13" stroke="#daa520" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="16" r="1" fill="#daa520"/></svg><div><span class="warning-label">Important: </span>Always create and verify the new admin account <strong>before</strong> deleting the old one. If you delete the only admin account, you'll be locked out and will need to reset Home Assistant from scratch, which means re-adding all devices and automations.</div></div>
+
     <div class="subsection"><h3>Video Guides</h3>
       <p>These videos walk you through Home Assistant from the basics to creating automations:</p>
       <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin:12px 0;">
