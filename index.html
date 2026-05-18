@@ -779,26 +779,51 @@ document.querySelectorAll('.tab').forEach(tab => {
   });
 });
 document.getElementById('searchBox').addEventListener('input', (e) => {
-  const query = e.target.value.toLowerCase();
+  const query = e.target.value.toLowerCase().trim();
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelector('.tab[data-filter="all"]').classList.add('active');
+  if (!query) {
+    document.querySelectorAll('.section').forEach(s => {
+      s.classList.remove('hidden');
+      const body = s.querySelector('.section-body');
+      const arrow = s.querySelector('.arrow');
+      if (body) body.classList.remove('open');
+      if (arrow) arrow.classList.remove('open');
+    });
+    return;
+  }
+  // Score each section: header match = strong, step titles = medium, body text = weak
+  const scored = [];
   document.querySelectorAll('.section').forEach(s => {
-    const body = s.querySelector('.section-body');
-    const arrow = s.querySelector('.arrow');
-    if (!query) {
-      s.classList.remove('hidden');
-      if (body) { body.classList.remove('open'); }
-      if (arrow) { arrow.classList.remove('open'); }
-      return;
+    const header = (s.querySelector('.section-header h2') || {}).textContent || '';
+    const stepTitles = Array.from(s.querySelectorAll('.step-title')).map(t => t.textContent).join(' ');
+    const subheadings = Array.from(s.querySelectorAll('h3')).map(t => t.textContent).join(' ');
+    const faqQuestions = Array.from(s.querySelectorAll('.faq-q')).map(t => t.textContent).join(' ');
+    let score = 0;
+    if (header.toLowerCase().includes(query)) score += 10;
+    if (subheadings.toLowerCase().includes(query)) score += 5;
+    if (stepTitles.toLowerCase().includes(query)) score += 3;
+    if (faqQuestions.toLowerCase().includes(query)) score += 3;
+    // Only count body text if above didn't match
+    if (score === 0) {
+      const bodyText = (s.querySelector('.section-body') || {}).textContent || '';
+      if (bodyText.toLowerCase().includes(query)) score += 1;
     }
-    const text = s.textContent.toLowerCase();
-    if (text.includes(query)) {
-      s.classList.remove('hidden');
+    scored.push({ el: s, score });
+  });
+  const maxScore = Math.max(...scored.map(s => s.score));
+  // Show sections that scored at least half the max, or at least 1
+  const threshold = maxScore > 1 ? Math.max(Math.floor(maxScore / 2), 2) : 1;
+  scored.forEach(({ el, score }) => {
+    const body = el.querySelector('.section-body');
+    const arrow = el.querySelector('.arrow');
+    if (score >= threshold) {
+      el.classList.remove('hidden');
       if (body && !body.classList.contains('open')) { body.classList.add('open'); arrow.classList.add('open'); }
     } else {
-      s.classList.add('hidden');
-      if (body) { body.classList.remove('open'); }
-      if (arrow) { arrow.classList.remove('open'); }
+      el.classList.add('hidden');
+      if (body) body.classList.remove('open');
+      if (arrow) arrow.classList.remove('open');
     }
   });
 });
